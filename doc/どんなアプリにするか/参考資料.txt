@@ -1,0 +1,8 @@
+温泉協会：
+https://www.spa.or.jp/#searchwrap
+
+交通料金計算API：
+https://api-sdk.navitime.co.jp/api/travel-cost-calculation/
+
+
+
