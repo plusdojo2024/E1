@@ -17,6 +17,6 @@ insert into Review (User_Id, rv_onsenname, rv_point, rv_day, rv_img, rv_remark, 
 VALUES
 ('1','薬師乃湯','5','2024-06-10','noimage','よかった','2024-06-12','10','1');
 
-INSERT into Onsen(HS_NAME, HS_ADDRESS, HS_PHONE, HS_EFFECT, HS_VALUE, HS_IMG, HS_URL)
+INSERT into Onsen(onsen_NAME, HS_ADDRESS, HS_PHONE, HS_EFFECT, HS_VALUE, HS_IMG, HS_URL)
 VALUES
 ('薬師乃湯','阿賀野市村杉3946-6','0250-66-2626','関節リウマチ','250','Noimage','www.yakushinoyu.com');
