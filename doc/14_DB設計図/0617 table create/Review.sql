@@ -1,7 +1,7 @@
 Create table Review (
     rv_id int AUTO_INCREMENT PRIMARY KEY,
     User_Id int,
-    rv_hsname varchar(200) NOT NULL,
+    rv_Onsenname varchar(200) NOT NULL,
     rv_point int(5) NOT NULL,
     rv_day varchar(50) NOT NULL,
     rv_img varchar(255) NOT NULL,
