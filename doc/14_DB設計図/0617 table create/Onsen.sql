@@ -1,6 +1,6 @@
 CREATE TABLE Onsen (
     hs_id int AUTO_INCREMENT PRIMARY KEY,
-    hs_name varchar(100),
+    onsen_name varchar(100),
     hs_address varchar(100),
     hs_phone varchar(100),
     hs_effect varchar(100),
