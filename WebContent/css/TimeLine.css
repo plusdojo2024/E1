@@ -1,1 +1,182 @@
 @charset "UTF-8";
+/*ヘッダー*/
+#header{
+  background-color: white;
+  position:static;
+  height:10vh; /*ヘッダーの高さ*/
+  width:100%;
+}
+
+.logo{
+  position:absolute;
+  top:3%;
+  left:5%;
+  height:6vh;
+}
+
+.user-icon {
+  position:absolute;
+  right:6%;
+  top:1.5vh;
+  height:8vh;
+  line-height: 200px;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 50%;
+  border:double;
+  border-color: grey;
+}
+
+.header_hr{
+  position:absolute;
+  top:10%;
+  width:100%;
+}
+
+
+/*フッター*/
+#footer{
+  background-color: white;
+  position:fixed;
+  bottom:0;
+  right: 0.5em;
+  height: 12vh; /*フッターの高さ*/
+  width:100%;
+  padding-bottom: 1em;
+}
+
+#footer-tag {
+width:100%;
+display: flex;
+justify-content:space-evenly;
+align-items: center;
+}
+
+#footer-tag a{
+
+position:relative;
+display:inline-block;
+}
+
+#footer-tag p {
+width:10vh;
+text-align:center;
+position:absolute;
+    font-size: 1.8em;
+color:black;
+background-color: white;
+border:solid;
+border-color: black;
+border-radius: 12px;
+top:100%;
+left:40%;
+transform: translate(-50%, -50%);
+}
+
+.footer-icon{
+position:relative;
+width:8vh;
+}
+
+
+
+
+
+.p_Img{
+    width: 7em;
+    height: 7em;
+    border-radius:500%;
+    position: center;
+
+  }
+
+  .rate-form {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+  .rate-form input[type=radio] {
+    display: none;
+  }
+  .rate-form label {
+    position: relative;
+    padding: 0 5px;
+    color: #ccc;
+    cursor: pointer;
+    font-size: 35px;
+  }
+  .rate-form label:hover {
+    color: #ffcc00;
+  }
+  .rate-form label:hover ~ label {
+    color: #ffcc00;
+  }
+  .rate-form input[type=radio]:checked ~ label {
+    color: #ffcc00;
+  }
+.rate-form{
+  padding-left: 5em;
+}
+  .items{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    text-align: center;
+}
+
+.items{
+    padding-top: 15em;
+}
+.p_Nickname{
+	padding-top:1em;
+}
+
+.itemsbt{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  text-align: center;
+}
+.TimeLine{
+  text-align: center;
+ 
+  background-color: #FCF9EF;
+}
+.bt{
+	 font-size: 3em;
+}
+.last{
+  text-align: center;
+  padding-bottom: 7em;
+  background:radial-gradient(ellipse at top left, rgba(229, 3, 3, 0.9), rgba(20, 125, 231, 0.6),rgba(69, 243, 6, 0.6),rgba(229, 245, 7, 0.6),rgba(7, 164, 243, 0.6),rgba(243, 6, 207, 0.6)100%);
+}
+
+  
+.itemsbt{
+  margin-bottom:10vh;
+}
+
+/* 通常のアイコンの操作 */
+.icon {
+  margin-top: 5px;
+  right:6%;
+  height:8vh;
+  line-height: 200px;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 50%;
+  border:double;
+  border-color: grey;
+}
+.commentlist{
+ background-color:#FCF9EF ;
+ padding-bottom: 1em;
+}
+.name , .coment{
+ 
+  text-align: center;
+  margin-top: -5em;
+  margin-bottom: 5em;
+}
+.coment{
+  
+  padding-bottom: 10px;
+}
