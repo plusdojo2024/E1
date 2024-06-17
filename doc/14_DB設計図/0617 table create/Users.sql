@@ -1,4 +1,4 @@
--- SQLite
+
 Create table Users (
     User_Id int AUTO_INCREMENT PRIMARY KEY,
     User_Pw VARCHAR(12) NOT NULL,
