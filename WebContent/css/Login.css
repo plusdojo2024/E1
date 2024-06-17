@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+/*　bodyタグ　*/
+body {
+  background-color: #FCF9EF;
+  margin-top: auto;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+/*ユーザー情報「登録」、「変更」画面の見出し文字　*/
+h2{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 55px;
+}
+
+/*ログイン画面上の黄色い部分*/
+.br1 {
+  border: 80px solid #FCF9EF;
+  border-radius: 15px;
+}
+
+/*ログイン画面のロゴ画像を真ん中に*/
+.log{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FCF9EF;
+  text-align: center;
+  font-size:large;
+}
+
+/*ログインフォームを真ん中に*/
+.loginform{
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+/*「新規アカウント登録」の部分*/
+.shinki{
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 30px;
+padding: 20px 0px 20px 0px;
+/*font-size: smaller;*/
+color: black;
+}
+
+/*ユーザー情報登録の文字サイズ*/
+.turk_mj{
+font-size: 40px;
+display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FCF9EF;
+  text-align: center;
+}
+
+.txt {
+  display: inline-block;
+  width: 100%;
+  padding: 0.5em;
+  border: 1px solid #999;
+  box-sizing: border-box;
+  background: #FFFFFF;
+  margin: 0.5em 0;
+}
+
+.henkouzenbu{
+  margin-top: 85px;
+}
+
+
+header{
+  position:static;
+  height:10vh;
+  width:100%;
+  background-color: #FFFFFF;
+}
+
+.logo{
+  position:absolute;
+  top:3%;
+  left:5%;
+  height:6vh;
+}
+
+.user-icon {
+  position:absolute;
+  right:6%;
+  top:1.5vh;
+  height:8vh;
+  line-height: 200px;
+  background-color: rgba(0,0,0,0.2);
+  border-radius: 50%;
+  color: #fff;
+}
+
+.header_hr{
+  position:absolute;
+  top:10%;
+  width:100%;
+}
+
+
+#footer{
+  background-color: white;
+  position:fixed;
+  bottom:0;
+  height:10vh; /* t b ^ [ ̍   */
+  width:100%;
+}
+#footer-tag {
+width:100%;
+display: flex;
+justify-content:space-evenly;
+align-items: center;
+margin-left: 40px;
+}
+#footer-tag a{
+padding-left: 20px;
+padding-right: 20px;
+position:relative;
+display:inline-block;
+}
+#footer-tag p {
+width:7vh;
+text-align:center;
+position:absolute;
+font-size:25px;
+color:black;
+background-color: white;
+border:solid;
+border-color: black;
+border-radius: 12px;
+top:92%;
+left:50%;
+transform: translate(-50%, -50%);
+}
+.footer-icon{
+position:relative;
+width:7vh;
+}
+
+
