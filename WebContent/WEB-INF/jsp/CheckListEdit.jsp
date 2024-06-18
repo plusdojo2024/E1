@@ -29,6 +29,19 @@
         </form>
     </div>
 
+
+	<c:forEach var="e" items="${CheckList}">
+		<form method="post" action="/E1/CheckListServlet">
+		<input type="text" name="cl_element" value="${e.cl_element }"><br>
+		</form>
+		<hr>
+	</c:forEach>
+
+
+
+
+
+
     <script>
         function checkAndAddTextbox() {
             var container = document.getElementById('textbox-container');

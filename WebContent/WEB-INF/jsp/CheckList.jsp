@@ -18,6 +18,13 @@
 <br>
 <img src="img/boarder.png" alt="boarder" class="boarder">
 
+
+
+
+
+
+
+
 <script>
     function onoff() {
         var kago = document.getElementById('kago');
