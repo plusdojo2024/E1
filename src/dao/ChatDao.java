@@ -65,5 +65,4 @@ public class ChatDao {
 			// 結果を返す
 			return cardList;
 		}
-
 }

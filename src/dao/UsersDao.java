@@ -94,61 +94,56 @@ public List<Users> select(Users card) {
 		String sql = "SELECT * FROM Users WHERE USER_ID LIKE ? AND USER_PW LIKE ? MAILADDRESS LIKE ? AND P_NICKNAME LIKE ? AND P_IMG LIKE ? AND P_AGE LIKE ? AND P_GENDER LIKE AND HIDUKE ?  ORDER BY number";
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		// SQL文を完成させる
-					if (card.getName() != null) {
-						pStmt.setString(1, "%" + card.getName() + "%");
+					if (card.getUSER_ID() != null) {
+						pStmt.setString(1, "%" + card.getUSER_ID() + "%");
 					}
 					else {
 						pStmt.setString(1, "%");
 					}
-					if (card.getAddress() != null) {
-						pStmt.setString(2, "%" + card.getAddress() + "%");
+					if (card.getUSER_PW() != null) {
+						pStmt.setString(2, "%" + card.getUSER_PW() + "%");
 					}
 					else {
 						pStmt.setString(2, "%");
 					}
 
-					if (card.getEmail() != null) {
-						pStmt.setString(3, "%" + card.getEmail() + "%");
+					if (card.getMAILADDRESS() != null) {
+						pStmt.setString(3, "%" + card.getMAILADDRESS() + "%");
 					}
 					else {
 						pStmt.setString(3, "%");
 					}
-					if (card.getCompany() != null) {
-						pStmt.setString(4, "%" + card.getCompany() + "%");
+					if (card.getP_NICKNAME() != null) {
+						pStmt.setString(4, "%" + card.getP_NICKNAME() + "%");
 					}
 					else {
 						pStmt.setString(4, "%");
 					}
-					if (card.getDepartmentname() != null) {
-						pStmt.setString(5, "%" + card.getDepartmentname() + "%");
+					if (card.getP_IMG() != null) {
+						pStmt.setString(5, "%" + card.getP_IMG() + "%");
 					}
 					else {
 						pStmt.setString(5, "%");
 					}
-					if (card.getTel() != null ){
-						pStmt.setString(6, "%" + card.getTel() + "%");
+					if (card.getP_AGE() != null ){
+						pStmt.setString(6, "%" + card.getP_AGE() + "%");
 					}
 					else {
 						pStmt.setString(6, "%");
 					}
-					if (card.getPostname() != null){
-						pStmt.setString(7, "%" + card.getPostname() + "%");
+					if (card.getP_GENDER() != null){
+						pStmt.setString(7, "%" + card.getP_GENDER() + "%");
 					}
 					else {
 						pStmt.setString(7, "%");
 					}
-					if (card.getFax() != null){
-						pStmt.setString(8, "%" + card.getFax() + "%");
+					if (card.getHIDUKE() != null){
+						pStmt.setString(8, "%" + card.getHIDUKE() + "%");
 					}
 					else {
 						pStmt.setString(8, "%");
 					}
-					if (card.getRemark() != null){
-						pStmt.setString(9, "%" + card.getRemark() + "%");
-					}
-					else {
-						pStmt.setString(9, "%");
-					}
+
 
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
