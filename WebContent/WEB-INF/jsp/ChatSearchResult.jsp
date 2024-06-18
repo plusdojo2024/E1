@@ -5,18 +5,18 @@
 <head>
     <meta charset="UTF-8">
     <title>検索結果｜ゆとりっぷ</title>
-    <link rel="stylesheet" href="ChatSearchResult.css">
-    <link rel="stylesheet" type="text/css" href="header_footer.css">
+    <link rel="stylesheet" href="/E1/css/header_footer.css">
+    <link rel="stylesheet" type="text/css" href="/E1/css/ChatSearchResult.css">
 </head>
 <body>
 <header id="header">
 
         <!--ロゴ-->
-        <a href="">
+        <a href="/E1/HomeServlet">
             <img src="image/logo_yutoripu2.png" alt="ロゴ" class="logo">
         </a>
         <!--ユーザーアイコン-->
-        <a href="">
+        <a href="/E1/UserChangeServlet">
             <img src="image/OIP (3).jpg" alt="アイコン" class="user-icon">
         </a>
         <hr class="header_hr">
@@ -30,8 +30,8 @@
 <!-- 写真横スライドさせるための始まり -->
     <div class="Container">
         <div class="Box-Container">
-            <div class="Box"><img src="img\89892636.webp"></div>
-            <div class="Box"><image src="img\tori.png"></div>
+            <div class="Box"><img src="/E1/WebContent/image/tori.png"></div>
+            <div class="Box"><img src="image\tori.png"></div>
             <div class="Box"></div>
             <div class="Box"></div>
             <div class="Box"></div>
@@ -51,19 +51,19 @@
                 <hr>
                 <!--画面下アイコン-->
                 <div id="footer-tag">
-                    <a href="">
+                    <a href="/E1/HomeServlet">
                         <img src="image/home.png" alt="ホーム" class="footer-icon">
                         <p>ホーム</p>
                     </a>
-                    <a href="">
+                    <a href="/E1/ChatSearchServlet">
                         <img src="image/chat.png" alt="チャット" class="footer-icon">
                         <p class="nimoji">検索</p>
                     </a>
-                    <a href="">
+                    <a href="/E1/TimeLineServlet">
                         <img src="image/timeline.png" alt="タイムライン" class="footer-icon">
                         <p class="nimoji">TL</p>
                     </a>
-                    <a href="">
+                    <a href="/E1/CheckListServlet">
                         <img src="image/checklist.png" alt="チェックリスト" class="footer-icon">
                         <p>持ち物</p>
                     </a>

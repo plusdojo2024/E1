@@ -6,11 +6,15 @@ public class ChatData implements Serializable {
 	private int cBot_Id;
 	private String User_Chat;
 
-	public ChatData(){
 
-	}
+	//引数がないコンストラクタ
+			public ChatData() {
+				this.cUser_Id =0;
+				this.cBot_Id =0;
+				this.User_Chat="";
+			}
 
-	public ChatData(int cUser_Id, int cBot_Id, String user_Chat) {
+	public ChatData(int cUser_Id, int cBot_Id, String User_Chat) {
 		super();
 		this.cUser_Id = cUser_Id;
 		this.cBot_Id = cBot_Id;
