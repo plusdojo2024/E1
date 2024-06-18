@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ChatResultServlet
+ * Servlet implementation class ReviewCreateServle
  */
-@WebServlet("/ChatResultServlet")
-public class ChatResultServlet extends HttpServlet {
+@WebServlet("/ReviewCreateServle")
+public class ReviewCreateServle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ChatResultServlet() {
+    public ReviewCreateServle() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,9 +29,9 @@ public class ChatResultServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// ログインページにフォワードする
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/SearchResult.jsp");
-				dispatcher.forward(request, response);
-			}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Review.jsp");
+		dispatcher.forward(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

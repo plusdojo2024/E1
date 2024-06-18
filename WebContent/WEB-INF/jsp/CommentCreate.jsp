@@ -5,18 +5,18 @@
 <head>
     <meta charset="UTF-8">
     <title>コメント</title>
-    <link rel="stylesheet" href="css/Commentstyle.css">
+    <link rel="stylesheet" href="css/CommentCreate.css">
 </head>
 <body id="top">
     <!--ヘッダー-->
     <header id="header">
         <!--ロゴ-->
-    <a href="">
-        <img src="img/logo_yutoripu2.png" alt="ロゴ" class="logo">
+    <a href="/E1/HomeServlet">
+        <img src="image/logo_yutoripu2.png" alt="ロゴ" class="logo">
     </a>
     <!--ユーザーアイコン-->
     <a href="">
-        <img src="img/OIP (3).jpg" alt="アイコン" class="user-icon">
+        <img src="image/OIP (3).jpg" alt="アイコン" class="user-icon">
     </a>
     <hr class="header_hr">
     </header>
@@ -74,19 +74,19 @@
             <!--画面下アイコン-->
             <div id="footer-tag">
                 <a href="">
-                    <img src="img/home.png" alt="ホーム" class="footer-icon">
+                    <img src="image/home.png" alt="ホーム" class="footer-icon">
                     <p>ホーム</p>
                 </a>
                 <a href="">
-                    <img src="img/chat.png" alt="チャット" class="footer-icon">
+                    <img src="image/chat.png" alt="チャット" class="footer-icon">
                     <p class="nimoji">検索</p>
                 </a>
                 <a href="">
-                    <img src="img/timeline.png" alt="タイムライン" class="footer-icon">
+                    <img src="image/timeline.png" alt="タイムライン" class="footer-icon">
                     <p class="nimoji">投稿</p>
                 </a>
                 <a href="">
-                    <img src="img/checklist.png" alt="チェックリスト" class="footer-icon">
+                    <img src="image/checklist.png" alt="チェックリスト" class="footer-icon">
                     <p>持ち物</p>
                 </a>
     </footer>
