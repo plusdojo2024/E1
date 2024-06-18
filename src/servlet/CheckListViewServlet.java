@@ -10,11 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.CheckListDAO;
-import model.CheckList;
 
 /**
- * Servlet implementation class HomeW
+ * Servlet implementation class CheckListServlet
  */
 @WebServlet("/CheckListViewServlet")
 public class CheckListViewServlet extends HttpServlet {
@@ -26,25 +24,19 @@ public class CheckListViewServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-
-  		if (session.getAttribute("User_Id") == null) {
-
-
-			response.sendRedirect("/YuTrip test/LoginServlet");
+/*
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/E1/LoginServlet");
 			return;
 		}
 
 
-		CheckListDAO cDao = new CheckListDAO();
-		List<CheckList> CheckList = cDao.select(new CheckList(100, 100, "", "", ""));
-
-
+		BcDAO bDao = new BcDAO();
+		List<Bc> cardList = bDao.select(new Bc("", "", "", "", "", "", "","","",""));
 
 		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("CheckList", CheckList);
-
-
-
+		request.setAttribute("cardList", cardList);
+*/
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckListView.jsp");
 		dispatcher.forward(request, response);
