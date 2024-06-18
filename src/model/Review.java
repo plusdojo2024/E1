@@ -26,7 +26,6 @@ public class Review implements Serializable {
 		this.RV_IINECHECK = RV_IINECHECK;
 		this.RV_BOOK =RV_BOOK;
 	}
-
 	public Review() {
 		this.RV_ID = 0;
 		this.USER_ID = 0;
@@ -39,6 +38,88 @@ public class Review implements Serializable {
 		this.RV_IINECHECK = 0;
 		this.RV_BOOK =0;
 	}
+
+	public int getRV_ID() {
+		return RV_ID;
+	}
+
+	public void setRV_ID(int rV_ID) {
+		RV_ID = rV_ID;
+	}
+
+	public int getUSER_ID() {
+		return USER_ID;
+	}
+
+	public void setUSER_ID(int uSER_ID) {
+		USER_ID = uSER_ID;
+	}
+
+	public String getRV_ONSENNAME() {
+		return RV_ONSENNAME;
+	}
+
+	public void setRV_ONSENNAME(String rV_ONSENNAME) {
+		RV_ONSENNAME = rV_ONSENNAME;
+	}
+
+	public int getRV_POINT() {
+		return RV_POINT;
+	}
+
+	public void setRV_POINT(int rV_POINT) {
+		RV_POINT = rV_POINT;
+	}
+
+	public int getRV_DAY() {
+		return RV_DAY;
+	}
+
+	public void setRV_DAY(int rV_DAY) {
+		RV_DAY = rV_DAY;
+	}
+
+	public String getRV_IMG() {
+		return RV_IMG;
+	}
+
+	public void setRV_IMG(String rV_IMG) {
+		RV_IMG = rV_IMG;
+	}
+
+	public String getRV_REMARK() {
+		return RV_REMARK;
+	}
+
+	public void setRV_REMARK(String rV_REMARK) {
+		RV_REMARK = rV_REMARK;
+	}
+
+	public int getRV_HIDUKE() {
+		return RV_HIDUKE;
+	}
+
+	public void setRV_HIDUKE(int rV_HIDUKE) {
+		RV_HIDUKE = rV_HIDUKE;
+	}
+
+	public int getRV_IINECHECK() {
+		return RV_IINECHECK;
+	}
+
+	public void setRV_IINECHECK(int rV_IINECHECK) {
+		RV_IINECHECK = rV_IINECHECK;
+	}
+
+	public int getRV_BOOK() {
+		return RV_BOOK;
+	}
+
+	public void setRV_BOOK(int rV_BOOK) {
+		RV_BOOK = rV_BOOK;
+	}
+
+	
 	
 
 }
