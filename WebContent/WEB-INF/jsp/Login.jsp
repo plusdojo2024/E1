@@ -5,13 +5,14 @@
 <head>
 <meta charset="UTF-8">
 <title>ログイン | ゆとりっぷ</title>
-<link rel="stylesheet" href="css/Login.css">
+<!--   <link rel="stylesheet" href="/E1/css/Login.css">  -->
+<link rel="stylesheet" type ="text/css" href="/E1/css/Login.css">
 </head>
 
 <body>
 <div class="br1">
 <div class ="log">
-<img src="img/login_logo.png" width="516" height="450" >
+<img src="image/login_logo.png" width="516" height="450" >
 </div>
 </div>
 

@@ -30,8 +30,8 @@
 <!-- 写真横スライドさせるための始まり -->
     <div class="Container">
         <div class="Box-Container">
-            <div class="Box"><img src="/E1/WebContent/image/tori.png"></div>
-            <div class="Box"><img src="image\tori.png"></div>
+            <div class="Box"></div>
+            <div class="Box"></div>
             <div class="Box"></div>
             <div class="Box"></div>
             <div class="Box"></div>
