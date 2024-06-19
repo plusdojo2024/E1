@@ -21,16 +21,37 @@ import model.CheckList;
 public class CheckListEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		HttpSession session = request.getSession();
+/*
+		if (session.getAttribute("User_Id") == null) {
+			response.sendRedirect("/E1/LoginServlet");
+			return;
+		}
+*/
+
+		// 検索ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckListEdit.jsp");
+		dispatcher.forward(request, response);
+	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
+/*
 		if (session.getAttribute("User_Id") == null) {
-			response.sendRedirect("/YuTrip/LoginServlet");
+			response.sendRedirect("/E1/LoginServlet");
 			return;
 		}
+*/
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
@@ -41,32 +62,9 @@ public class CheckListEditServlet extends HttpServlet {
 		String cl_Element = request.getParameter("cl_Element");
 		String Hiduke = request.getParameter("Hiduke");
 
-		// ここまで
-
-		// 更新または削除を行う
 		CheckListDAO clDao = new CheckListDAO();
-		if (request.getParameter("submit").equals("更新")) {
-			// ここを改造する
-			if (clDao.update(new CheckList(cl_Id, User_Id, cl_Name, cl_Element, Hiduke))) {	// 更新成功
-			// ここまで
-				request.setAttribute("result",
-				new Result("更新成功！", "レコードを更新しました。", "/YuTrip/ChekListServlet"));
-			}
-			else {												// 更新失敗
-				request.setAttribute("result",
-				new Result("更新失敗！", "レコードを更新できませんでした。", "/YuTrip/ChekListServlet"));
-			}
-		}
-		else {
-			if (clDao.delete(Integer.toString(cl_Id))) {	// 削除成功
-				request.setAttribute("result",
-				new Result("削除成功！", "レコードを削除しました。", "/YuTrip/CheckListServlet"));
-			}
-			else {						// 削除失敗
-				request.setAttribute("result",
-				new Result("削除失敗！", "レコードを削除できませんでした。", "/YuTrip/CheckListServlet"));
-			}
-		}
+		List<CheckList> CheckList = clDao.select(User_Id);
+		request.setAttribute("CheckList", CheckList);
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckListView.jsp");

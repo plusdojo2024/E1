@@ -14,7 +14,7 @@
             <戻る>
         </a>
     </div>
-
+<!--
     <div id="input">
         <div id="number">
             <1>
@@ -28,11 +28,12 @@
             <button class="post_button" type="submit" >保存する</button>
         </form>
     </div>
-
+-->
 
 	<c:forEach var="e" items="${CheckList}">
 		<form method="post" action="/E1/CheckListServlet">
-		<input type="text" name="cl_element" value="${e.cl_element }"><br>
+		<input type="text" name="cl_element" value="${e.cl_element }"><br>"
+		<input type="submit" name="save" value="保存">
 		</form>
 		<hr>
 	</c:forEach>
@@ -106,19 +107,19 @@
             <!--画面下アイコン-->
             <div id="footer-tag">
                 <a href="">
-                    <img src="img/home.png" alt="ホーム" class="footer-icon">
+                    <img src="image/home.png" alt="ホーム" class="footer-icon">
                     <p>ホーム</p>
                 </a>
                 <a href="">
-                    <img src="img/chat.png" alt="チャット" class="footer-icon">
+                    <img src="image/chat.png" alt="チャット" class="footer-icon">
                     <p class="nimoji">検索</p>
                 </a>
                 <a href="">
-                    <img src="img/timeline.png" alt="タイムライン" class="footer-icon">
+                    <img src="image/timeline.png" alt="タイムライン" class="footer-icon">
                     <p class="nimoji">投稿</p>
                 </a>
                 <a href="CheckListServlet">
-                    <img src="img/checklist.png" alt="チェックリスト" class="footer-icon">
+                    <img src="image/checklist.png" alt="チェックリスト" class="footer-icon">
                     <p>持ち物</p>
                 </a>
            </div>

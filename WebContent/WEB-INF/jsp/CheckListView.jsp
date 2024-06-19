@@ -25,6 +25,10 @@
     <br><br><br>
 </div>
 
+<c:forEach var="e" items-"${CheckList }">
+	<input type="text" name="cl_Name" value="${e.cl_Name }"><br>
+</c:forEach>
+
 
 
 <script>
