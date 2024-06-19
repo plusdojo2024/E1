@@ -23,49 +23,54 @@ public class ReviewDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO Review VALUES (NULL, NULL, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO Review VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getRV_ONSENNAME() != null && !card.getRV_ONSENNAME().equals("")) {
-				pStmt.setString(1, card.getRV_ONSENNAME());
+			if (card.getUSER_ID() != 0) {
+				pStmt.setString(1,Integer.toString(card.getUSER_ID()));
 			} else {
-				pStmt.setString(1, "（未設定）");
+				pStmt.setString(1, "0");
+			}
+			if (card.getRV_ONSENNAME() != null && !card.getRV_ONSENNAME().equals("")) {
+				pStmt.setString(2, card.getRV_ONSENNAME());
+			} else {
+				pStmt.setString(2, "（未設定）");
 			}
 			if (card.getRV_POINT() != 0) {
-				pStmt.setString(2, Integer.toString(card.getRV_POINT()));//Intのときにif文で何を入れるか松川さんに聞く
+				pStmt.setString(3, Integer.toString(card.getRV_POINT()));//Intのときにif文で何を入れるか松川さんに聞く
 			} else {
-				pStmt.setString(2, "0");
+				pStmt.setString(3, "0");
 			}
 			if (card.getRV_DAY() != 0) {
-				pStmt.setString(3, Integer.toString(card.getRV_DAY()));
-			} else {
-				pStmt.setString(3, "（未設定）");
-			}
-			if (card.getRV_IMG() != null && !card.getRV_IMG().equals("")) {
-				pStmt.setString(4, card.getRV_IMG());
+				pStmt.setString(4, Integer.toString(card.getRV_DAY()));
 			} else {
 				pStmt.setString(4, "（未設定）");
 			}
-			if (card.getRV_REMARK() != null && !card.getRV_REMARK().equals("")) {
-				pStmt.setString(5, card.getRV_REMARK());
+			if (card.getRV_IMG() != null && !card.getRV_IMG().equals("")) {
+				pStmt.setString(5, card.getRV_IMG());
 			} else {
 				pStmt.setString(5, "（未設定）");
 			}
-			if (card.getRV_HIDUKE() != 0) {
-				pStmt.setString(6, Integer.toString(card.getRV_HIDUKE()));
+			if (card.getRV_REMARK() != null && !card.getRV_REMARK().equals("")) {
+				pStmt.setString(6, card.getRV_REMARK());
 			} else {
-				pStmt.setString(6, "0");
+				pStmt.setString(6, "（未設定）");
 			}
-			if (card.getRV_IINECHECK() != 0) {
-				pStmt.setString(7, Integer.toString(card.getRV_IINECHECK()));
+			if (card.getRV_HIDUKE() != 0) {
+				pStmt.setString(7, Integer.toString(card.getRV_HIDUKE()));
 			} else {
 				pStmt.setString(7, "0");
 			}
-			if (card.getRV_BOOK() != 0) {
-				pStmt.setString(8, Integer.toString(card.getRV_BOOK()));
+			if (card.getRV_IINECHECK() != 0) {
+				pStmt.setString(8, Integer.toString(card.getRV_IINECHECK()));
 			} else {
 				pStmt.setString(8, "0");
+			}
+			if (card.getRV_BOOK() != 0) {
+				pStmt.setString(9, Integer.toString(card.getRV_BOOK()));
+			} else {
+				pStmt.setString(9, "0");
 			}
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
@@ -73,7 +78,7 @@ public class ReviewDao {
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
-		} 
+		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} finally {
@@ -111,43 +116,43 @@ public class ReviewDao {
 			}else {
 				pStmt.setString(1, null);
 			}
-			
+
 			if (card.getRV_POINT() != 0) {
 				pStmt.setString(2,Integer.toString(card.getRV_POINT()));
 			}else {
 				pStmt.setString(2, null);
 			}
-			
+
 			if (card.getRV_DAY() != 0) {
 				pStmt.setString(3,Integer.toString(card.getRV_DAY()));
 			}else {
 				pStmt.setString(3, null);
 			}
-			
+
 			if (card.getRV_IMG() != null && !card.getRV_IMG().equals("")) {
 				pStmt.setString(4, card.getRV_IMG());
 			}else {
 				pStmt.setString(4, null);
 			}
-			
+
 			if (card.getRV_REMARK() != null && !card.getRV_REMARK().equals("")) {
 				pStmt.setString(5, card.getRV_REMARK());
 			}else {
 				pStmt.setString(5, null);
 			}
-			
+
 			if (card.getRV_HIDUKE() != 0) {
 				pStmt.setString(6,Integer.toString(card.getRV_HIDUKE()));
 			}else {
 				pStmt.setString(6, null);
 			}
-			
+
 			if (card.getRV_IINECHECK() != 0) {
 				pStmt.setString(7,Integer.toString(card.getRV_IINECHECK()));
 			}else {
 				pStmt.setString(7, null);
 			}
-			
+
 			if (card.getRV_BOOK() != 0) {
 				pStmt.setString(8,Integer.toString(card.getRV_BOOK()));
 			}else {
@@ -176,7 +181,7 @@ public class ReviewDao {
 				}
 			}
 		}
-		
+
 		// 結果を返す
 		return result;
 
