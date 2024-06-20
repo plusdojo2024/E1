@@ -82,7 +82,7 @@ import model.ChatData;
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E1", "sa", "");
 
 					// SQL文を準備する
-					String sql = "SELECT * FROM CHAT_USER WHERE  cBot_Id LIKE ? ";
+					String sql = "SELECT * FROM ONSEN WHERE  cBot_Id LIKE ? ";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
 					if (card.getcBot_Id() != 0) {

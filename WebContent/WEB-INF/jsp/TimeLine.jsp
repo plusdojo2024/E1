@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -37,12 +38,11 @@
 
     </div>
   </div>
- 
-  <!-- タイムラインの表示処理です。 -->
+ <c:forEach var="e" items="${TList}">
   <div class="TimeLine">
     <!-- ユーザーアイコン-->
     <div id="p_Img">
-
+		<img src="vv">
     </div>
     <!-- ユーザーネーム -->
     <div id="p_Nickname">
@@ -52,7 +52,7 @@
     <div id="rv_remark">
       <h2>レビュー</h2>
       <div id="rv_honbun">
-        <p>レビュー本文</p>
+        <p>${e.RV_REMARK}</p>
       </div>
     </div>
     <!-- 評価★５段階 -->
@@ -75,19 +75,9 @@
     <!-- ユーザー側の乗せた画像・動画の表示 -->
     <div id="rv_img">
       <h2>動画・画像</h2>
-      <Script>
-        function imgg() {
-          var str = "kuri.mp4";
-          var result = str.substr(str.length - 3, 3);
-          // 画像か動画の判別をしている。
-          if (result === "jpg") {
-            document.write("<img src='/E1/image/OIP.jpg'");
-          } else if (result == "mp4") {
-            document.write("<video controls width='250' src='/E1/image/kuri.mp4'>MP4</video>");
-          }
-        }
-        imgg();
-      </Script>
+       <script>
+        document.write('<img src="../../E1/image/${e.RV_IMG}">');
+      </script>
 
     </div>
     <div class="bt">
@@ -118,90 +108,8 @@
 
 
   </div>
-<!-- タイムラインの表示処理です。 -->
-<div class="TimeLine">
-  <!-- ユーザーアイコン-->
-  <div id="p_Img">
-
-  </div>
-  <!-- ユーザーネーム -->
-  <div id="p_Nickname">
-    <p>ユーザーネーム</p>
-  </div>
-  <!-- レビュー文の表示 -->
-  <div id="rv_remark">
-    <h2>レビュー</h2>
-    <div id="rv_honbun">
-      <p>レビュー本文</p>
-    </div>
-  </div>
-  <!-- 評価★５段階 -->
-
-  <div id="rv_point">
-    <h2>五段階評価</h2>
-    <div class="rate-form">
-      <input id="star5" type="radio" name="rv_point" value="5">
-      <label for="star5">★</label>
-      <input id="star4" type="radio" name="rv_point" value="4">
-      <label for="star4">★</label>
-      <input id="star3" type="radio" name="rv_point" value="3">
-      <label for="star3">★</label>
-      <input id="star2" type="radio" name="rv_point" value="2">
-      <label for="star2">★</label>
-      <input id="star1" type="radio" name="rv_point" value="1">
-      <label for="star1">★</label>
-    </div>
-  </div>
-  <!-- ユーザー側の乗せた画像・動画の表示 -->
-  <div id="rv_img">
-    <h2>動画・画像</h2>
-    <Script>
-      function imgg() {
-        var str = "kuri.mp4";
-        var result = str.substr(str.length - 3, 3);
-        // 画像か動画の判別をしている。
-        if (result === "jpg") {
-          document.write("<img src='/E1/image/OIP.jpg'");
-        } else if (result == "mp4") {
-          document.write("<video controls width='250' src='/E1/image/kuri.mp4'>MP4</video>");
-        }
-      }
-      imgg();
-    </Script>
-
-  </div>
-  <div class="bt">
-  <div class="itemsbt">
-    <!-- お気に入り登録をするbutton -->
-    <div class="item">
-      <div class="HEART">
-        <label for="star1">❤</label>
-        <!-- 個々のハートの表示は,daoの方でユーザーidが❤した人の中になければ0であれば1にしてデータを返してそれを判別して表示を変える。 -->
-        <!-- いいねの実装処理アイディア　裏画面で処理してデータベース接続し❤した人欄をコロン区切りで保存しているのでそれをsolitで配列にして全部比較して指定のものを削除して戻せばいい。 -->
-      </div>
-    </div>
-    <!-- コメントに飛ぶbutton -->
-    <div class="item">
-      <div class="comment">
-        <a href="text.html">💬</a>
-      </div>
-    </div>
-    <!-- ブックマークに入れるbutton -->
-    <div class="item">
-      <div class="bookmark">
-        <a>✔</a>
-      </div>
-    </div>
-	</div>
-
-  </div>
-
-
-</div>
-<div class="last">
-  <h2>これ以上はレビューがありません</h2>
-</div>
-
+  
+  </c:forEach>
       <!--footerここまで-->
     </body>
 <!--htmlの<body>の最後に挿入
@@ -232,5 +140,5 @@
                   </a>
               </div>
           </div>
-
+</footer>
 </html>

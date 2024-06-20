@@ -10,10 +10,13 @@ public class OnsenData implements Serializable {
 		private String HS_VALUE; //温泉料金
 		private String HS_IMG; //温泉画像
 		private String HS_URL; //温泉URL
+		private String HS_ROTEN; //露天風呂
+		private String HS_KEIKAN; //景観
+		private String HS_KYAKUBURO; //客室風呂
 
 
 		//引数があるコンストラクタ
-		public OnsenData(int HS_ID, String ONSEN_NAME, String HS_ADDRESS, String HS_PHONE, String HS_EFFECT, String HS_VALUE, String HS_IMG, String HS_URL) {
+		public OnsenData(int HS_ID, String ONSEN_NAME, String HS_ADDRESS, String HS_PHONE, String HS_EFFECT, String HS_VALUE, String HS_IMG, String HS_URL,String HS_ROTEN,String HS_KEIKAN,String HS_KYAKUBURO) {
 			super();
 			this.HS_ID = HS_ID;
 			this.ONSEN_NAME = ONSEN_NAME;
@@ -23,6 +26,9 @@ public class OnsenData implements Serializable {
 			this.HS_VALUE = HS_VALUE;
 			this.HS_IMG = HS_IMG;
 			this.HS_URL = HS_URL;
+			this.HS_ROTEN = HS_ROTEN;
+			this.HS_KEIKAN = HS_KEIKAN;
+			this.HS_KYAKUBURO = HS_KYAKUBURO;
 
 		}
 		//引数がないコンストラクタ
@@ -35,6 +41,9 @@ public class OnsenData implements Serializable {
 				this.HS_VALUE ="";
 				this.HS_IMG ="";
 				this.HS_URL ="";
+				this.HS_ROTEN ="";
+				this.HS_KEIKAN ="";
+				this.HS_KYAKUBURO ="";
 
 			}
 			public int getHS_ID() {
@@ -84,6 +93,24 @@ public class OnsenData implements Serializable {
 			}
 			public void setHS_URL(String hS_URL) {
 				HS_URL = hS_URL;
+			}
+			public String getHS_ROTEN() {
+				return HS_ROTEN;
+			}
+			public void setHS_ROTEN(String hS_ROTEN) {
+				HS_ROTEN = hS_ROTEN;
+			}
+			public String getHS_KEIKAN() {
+				return HS_KEIKAN;
+			}
+			public void setHS_KEIKAN(String hS_KEIKAN) {
+				HS_KEIKAN = hS_KEIKAN;
+			}
+			public String getHS_KYAKUBURO() {
+				return HS_KYAKUBURO;
+			}
+			public void setHS_KYAKUBURO(String hS_KYAKUBURO) {
+				HS_KYAKUBURO = hS_KYAKUBURO;
 			}
 
 }

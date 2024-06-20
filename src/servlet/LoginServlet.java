@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 					//new ("ログイン失敗！", "IDまたはPWに間違いがあります。", "/E1/LoginServlet"));
 
 					// 結果ページにフォワードする
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/TimeLine.jsp");
 					dispatcher.forward(request, response);
 				}
 		// TODO Auto-generated method stub

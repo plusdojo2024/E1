@@ -30,12 +30,12 @@
 <!-- 写真横スライドさせるための始まり -->
     <div class="Container">
         <div class="Box-Container">
-            <div class="Box"></div>
-            <div class="Box"></div>
-            <div class="Box"></div>
-            <div class="Box"></div>
-            <div class="Box"></div>
-            <div class="Box"></div>
+            <div class="Box1"></div>
+            <div class="Box2"></div>
+            <div class="Box3"></div>
+            <div class="Box4"></div>
+            <div class="Box5"></div>
+            <div class="Box6"></div>
             <!-- 必要な数の.Box要素を追加 -->
         </div>
         <div class="Arrow left">

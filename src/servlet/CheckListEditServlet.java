@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,6 +36,7 @@ public class CheckListEditServlet extends HttpServlet {
 		}
 */
 
+
 		// 検索ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckListEdit.jsp");
 		dispatcher.forward(request, response);
@@ -63,7 +65,7 @@ public class CheckListEditServlet extends HttpServlet {
 		String Hiduke = request.getParameter("Hiduke");
 
 		CheckListDAO clDao = new CheckListDAO();
-		List<CheckList> CheckList = clDao.select(User_Id);
+		List<CheckList> CheckList = clDao.select(User_Id,"");
 		request.setAttribute("CheckList", CheckList);
 
 		// 結果ページにフォワードする

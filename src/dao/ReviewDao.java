@@ -10,6 +10,11 @@ import java.util.List;
 import model.Review;
 
 public class ReviewDao {
+	//表示
+
+	
+	
+	//登録
 	public boolean insert(Review card) {
 		boolean result = false;
 		Connection conn = null;
@@ -42,8 +47,8 @@ public class ReviewDao {
 			} else {
 				pStmt.setString(3, "0");
 			}
-			if (card.getRV_DAY() != 0) {
-				pStmt.setString(4, Integer.toString(card.getRV_DAY()));
+			if (card.getRV_DAY() != "") {
+				pStmt.setString(4, card.getRV_DAY());
 			} else {
 				pStmt.setString(4, "（未設定）");
 			}
@@ -57,8 +62,8 @@ public class ReviewDao {
 			} else {
 				pStmt.setString(6, "（未設定）");
 			}
-			if (card.getRV_HIDUKE() != 0) {
-				pStmt.setString(7, Integer.toString(card.getRV_HIDUKE()));
+			if (card.getRV_HIDUKE() != "") {
+				pStmt.setString(7, card.getRV_HIDUKE());
 			} else {
 				pStmt.setString(7, "0");
 			}
@@ -94,7 +99,7 @@ public class ReviewDao {
 		// 結果を返す
 		return result;
 		}
-
+	//更新
 	public boolean update(Review card) {
 		Connection conn = null;
 		boolean result = false;
@@ -123,8 +128,8 @@ public class ReviewDao {
 				pStmt.setString(2, null);
 			}
 
-			if (card.getRV_DAY() != 0) {
-				pStmt.setString(3,Integer.toString(card.getRV_DAY()));
+			if (card.getRV_DAY() != "") {
+				pStmt.setString(3,card.getRV_DAY());
 			}else {
 				pStmt.setString(3, null);
 			}
@@ -141,8 +146,8 @@ public class ReviewDao {
 				pStmt.setString(5, null);
 			}
 
-			if (card.getRV_HIDUKE() != 0) {
-				pStmt.setString(6,Integer.toString(card.getRV_HIDUKE()));
+			if (card.getRV_HIDUKE() != "") {
+				pStmt.setString(6,card.getRV_HIDUKE());
 			}else {
 				pStmt.setString(6, null);
 			}
