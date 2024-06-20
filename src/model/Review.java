@@ -7,14 +7,15 @@ public class Review implements Serializable {
 	private int USER_ID;	// ユーザーID
 	private String RV_ONSENNAME;	// レビュー温泉
 	private int RV_POINT;
-	private int RV_DAY;
+	private String RV_DAY;
 	private String RV_IMG;
 	private String RV_REMARK;
-	private int RV_HIDUKE;
+	private String RV_HIDUKE;
 	private int RV_IINECHECK;
 	private int RV_BOOK;
+	
 
-	public Review(int RV_ID, int USER_ID, String RV_ONSENNAME, int RV_POINT, int RV_DAY, String RV_IMG, String RV_REMARK, int RV_HIDUKE, int RV_IINECHECK, int RV_BOOK) {
+	public Review(int RV_ID, int USER_ID, String RV_ONSENNAME, int RV_POINT, String RV_DAY, String RV_IMG, String RV_REMARK, String RV_HIDUKE, int RV_IINECHECK, int RV_BOOK) {
 		this.RV_ID = RV_ID;
 		this.USER_ID = USER_ID;
 		this.RV_ONSENNAME = RV_ONSENNAME;
@@ -31,14 +32,16 @@ public class Review implements Serializable {
 		this.USER_ID = 0;
 		this.RV_ONSENNAME = "";
 		this.RV_POINT = 0;
-		this.RV_DAY = 0;
+		this.RV_DAY = "";
 		this.RV_IMG = "";
 		this.RV_REMARK  = 	"" ;
-		this.RV_HIDUKE = 0;
+		this.RV_HIDUKE = "";
 		this.RV_IINECHECK = 0;
 		this.RV_BOOK =0;
+
 	}
 
+	
 	public int getRV_ID() {
 		return RV_ID;
 	}
@@ -71,11 +74,11 @@ public class Review implements Serializable {
 		RV_POINT = rV_POINT;
 	}
 
-	public int getRV_DAY() {
+	public String getRV_DAY() {
 		return RV_DAY;
 	}
 
-	public void setRV_DAY(int rV_DAY) {
+	public void setRV_DAY(String rV_DAY) {
 		RV_DAY = rV_DAY;
 	}
 
@@ -95,11 +98,11 @@ public class Review implements Serializable {
 		RV_REMARK = rV_REMARK;
 	}
 
-	public int getRV_HIDUKE() {
+	public String getRV_HIDUKE() {
 		return RV_HIDUKE;
 	}
 
-	public void setRV_HIDUKE(int rV_HIDUKE) {
+	public void setRV_HIDUKE(String rV_HIDUKE) {
 		RV_HIDUKE = rV_HIDUKE;
 	}
 
