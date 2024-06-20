@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,7 +7,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='css/TimeLine.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/E1/css/TimeLine.css'>
     <script src='main.js'></script>
 </head>
 <body>
@@ -18,11 +17,11 @@
 
     <!--ロゴ-->
     <a href="">
-        <img src="imag/logo_yutoripu2.png" alt="ロゴ" class="logo">
+        <img src="image/logo_yutoripu2.png" alt="ロゴ" class="logo">
     </a>
     <!--ユーザーアイコン-->
     <a href="">
-        <img src="imag/OIP (3).jpg" alt="アイコン" class="user-icon">
+        <img src="/E1/image/OIP (3).jpg" alt="アイコン" class="user-icon">
     </a>
     <hr class="header_hr">
 </header>
@@ -113,39 +112,41 @@
 
 
 <!--セッションにデータが入ってるからforで回してデータを繰り返し表示する。  -->
+<c:forEach var="e" items= "${CList}">
 <div class="commentlist">
-<div id="come"><img src="imag/OIP (3).jpg"alt="icon" class="icon"></div>
-<div class="name"> ユーザー：ここにデータの表示 </div>
-<div class="coment">コメントの表示</div>
+<div id="come"><img src="../../E1/image/OIP (3).jpg" alt="icon" class="icon"></div>
+<p class="name"> ユーザー：${e.P_NICKNAME} </p>
+<p class="coment">${e.comment}</p>
 
 </div>
+</c:forEach>
 <div class="last">
     <h2>これ以上はコメントがありません</h2>
   </div>
 </body>
 
-<footer id="footer">
-    <div id="footer-wrapper">
-        <hr>
-        <!--画面下アイコン-->
-        <div id="footer-tag">
-            <a href="">
-                <img src="imag/home.png" alt="ホーム" class="footer-icon">
-                <p>ホーム</p>
-            </a>
-            <a href="">
-                <img src="imag/chat.png" alt="チャット" class="footer-icon">
-                <p class="nimoji">検索</p>
-            </a>
-            <a href="">
-                <img src="imag/timeline.png" alt="タイムライン" class="footer-icon">
-                <p id="timel" class="nimoji">TL</p>
-            </a>
-            <a href="">
-                <img src="imag/checklist.png" alt="チェックリスト" class="footer-icon">
-                <p>持ち物</p>
-            </a>
-        </div>
-    </div>
+  <footer id="footer">
+          <div id="footer-wrapper">
+              <hr>
+              <!--画面下アイコン-->
+              <div id="footer-tag">
+                  <a href="">
+                      <img src="/E1/image/home.png" alt="ホーム" class="footer-icon">
+                      <p>ホーム</p>
+                  </a>
+                  <a href="">
+                      <img src="/E1/image/chat.png" alt="チャット" class="footer-icon">
+                      <p class="nimoji">検索</p>
+                  </a>
+                  <a href="">
+                      <img src="/E1/image/timeline.png" alt="タイムライン" class="footer-icon">
+                      <p id="timel" class="nimoji">TL</p>
+                  </a>
+                  <a href="">
+                      <img src="/E1/image/checklist.png" alt="チェックリスト" class="footer-icon">
+                      <p>持ち物</p>
+                  </a>
+              </div>
+          </div>
 </footer>
 </html>
