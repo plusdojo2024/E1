@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import dao.CheckListDAO;
+import model.CheckList;
 
 
 /**
@@ -25,21 +29,35 @@ public class CheckListViewServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 /*
-		if (session.getAttribute("id") == null) {
+		if (session.getAttribute("User_Id") == null) {
 			response.sendRedirect("/E1/LoginServlet");
 			return;
 		}
-
-
-		BcDAO bDao = new BcDAO();
-		List<Bc> cardList = bDao.select(new Bc("", "", "", "", "", "", "","","",""));
-
-		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("cardList", cardList);
 */
+
+		request.setCharacterEncoding("UTF-8");
+
+		// ここから改造
+		String cl_Name = "家電"; //request.getParameter("cl_Name");
+
+		CheckListDAO clDao = new CheckListDAO();
+		List<CheckList> CheckList = clDao.select(cl_Name);
+		request.setAttribute("CheckList", CheckList);
+
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckListView.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String cl_Name = "家電"; //request.getParameter("cl_Name");
+
+		CheckListDAO clDao = new CheckListDAO();
+		List<CheckList> CheckList = clDao.select(cl_Name);
+		request.setAttribute("CheckList", CheckList);
+
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckListView.jsp");
 		dispatcher.forward(request, response);
 	}
 }
-

@@ -12,7 +12,7 @@ import model.CheckList;
 
 public class CheckListDAO {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
-	public List<CheckList> select(int User_Id) {
+	public List<CheckList> select(String cl_Name) {
 		Connection conn = null;
 		List<CheckList> CheckList = new ArrayList<CheckList>();
 
@@ -24,11 +24,11 @@ public class CheckListDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/YuTrip DB/YuTrip dadada", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM CHECKLIST WHERE User_Id LIKE ? ORDER BY cl_Id";
+			String sql = "SELECT cl_element FROM CHECKLIST WHERE cl_name=? ORDER BY cl_Id";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる
 
-			pStmt.setString(1, "%" + User_Id + "%");
+			pStmt.setString(1, "%" + cl_Name + "%");
 
 
 			// SQL文を実行し、結果表を取得する
@@ -40,7 +40,7 @@ public class CheckListDAO {
 				rs.getInt("cl_Id"),
 				rs.getInt("User_Id"),
 				rs.getString("cl_Name"),
-				rs.getString("cl_element"),
+				rs.getString("cl_Element"),
 				rs.getString("Hiduke")
 				);
 				CheckList.add(record);

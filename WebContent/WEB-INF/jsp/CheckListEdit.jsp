@@ -10,7 +10,7 @@
 <body>
     <br><br><br><br><br><br><br><br><br>
     <div id="Edit">
-        <a href="/YuTrip test/CheckListViewServlet.java">
+        <a href="/E1/CheckListViewServlet.java">
             <戻る>
         </a>
     </div>
@@ -29,14 +29,16 @@
         </form>
     </div>
 -->
-
+<div id="textbox-form">
 	<c:forEach var="e" items="${CheckList}">
 		<form method="post" action="/E1/CheckListServlet">
-		<input type="text" name="cl_element" value="${e.cl_element }"><br>"
-		<input type="submit" name="save" value="保存">
+		<input type="text" class="textbox" name="cl_element" value="${e.cl_element }"><br>"
+		<input type="submit" class="post_button" name="save" value="保存">
 		</form>
 		<hr>
 	</c:forEach>
+</div>
+
 
 
 
@@ -78,18 +80,16 @@
 
 
 
-
-
 <!--テンプレート＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝-->
     <header id="header">
 
         <!--ロゴ-->
         <a href="">
-            <img src="img/logo_yutoripu2.png" alt="ロゴ" class="logo">
+            <img src="image/logo_yutoripu2.png" alt="ロゴ" class="logo">
         </a>
         <!--ユーザーアイコン-->
         <a href="">
-            <img src="img/OIP (3).jpg" alt="アイコン" class="user-icon">
+            <img src="image/OIP (3).jpg" alt="アイコン" class="user-icon">
         </a>
         <hr class="header_hr">
     </header>
@@ -106,25 +106,24 @@
             <hr>
             <!--画面下アイコン-->
             <div id="footer-tag">
-                <a href="">
+                <a href="/E1/HomeServlet">
                     <img src="image/home.png" alt="ホーム" class="footer-icon">
                     <p>ホーム</p>
                 </a>
-                <a href="">
+                <a href="/E1/ChatSearchServlet">
                     <img src="image/chat.png" alt="チャット" class="footer-icon">
                     <p class="nimoji">検索</p>
                 </a>
-                <a href="">
+                <a href="/E1/TimeLineServlet">
                     <img src="image/timeline.png" alt="タイムライン" class="footer-icon">
                     <p class="nimoji">投稿</p>
                 </a>
-                <a href="CheckListServlet">
+                <a href="CheckListServlet.java">
                     <img src="image/checklist.png" alt="チェックリスト" class="footer-icon">
                     <p>持ち物</p>
                 </a>
-           </div>
+          </div>
     </div>
     </footer>
-</body>
     <!--footerここまで＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝-->
 

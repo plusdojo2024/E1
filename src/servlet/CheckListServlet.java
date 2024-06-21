@@ -11,10 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.CheckListViewDAO;
+import model.CheckList;
+
 /**
  * Servlet implementation class SearchServlet
  */
-@WebServlet("/SearchServlet")
+@WebServlet("/CheckListServlet")
 public class CheckListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -22,14 +25,21 @@ public class CheckListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+/*
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("User_Id") == null) {
-			response.sendRedirect("/YuTrip/LoginServlet");
+			response.sendRedirect("/E1/LoginServlet");
 			return;
 		}
-
+*/
+		request.setCharacterEncoding("UTF-8");
+		int User_Id = 1 ;//Integer.parseInt(request.getParameter("User_Id"));
+		CheckListViewDAO clvDao = new CheckListViewDAO();
+		List<CheckList> CheckList = clvDao.select(User_Id);
 		// 検索ページにフォワードする
+		request.setAttribute("CheckList", CheckList);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckList.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -40,26 +50,16 @@ public class CheckListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/YuTrip/LoginServlet");
+/*
+		if (session.getAttribute("User_Id") == null) {
+			response.sendRedirect("/E1/LoginServlet");
 			return;
 		}
+*/
+		String cl_Name = "家電" ;//Integer.parseInt(request.getParameter("User_Id"));
+		request.setAttribute("家電", cl_Name);
 
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String name = request.getParameter("name");
-		String address = request.getParameter("address");
-
-		// 検索処理を行う
-		BcDAO bDao = new BcDAO();
-		// ここを改造しました
-		List<Bc> cardList = bDao.select(new Bc(0, "", "", "", name, "", address, "", "", "", ""));
-
-		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("cardList", cardList);
-
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckList.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckListView.jsp");
 		dispatcher.forward(request, response);
 	}
 }

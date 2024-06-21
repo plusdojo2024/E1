@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,11 +12,11 @@
 <body>
 <br><br><br><br><br><br><br><br><br>
 <div id="Edit">
-    <a href="/YuTrip test/CheckListServlet" id="back">
-        <img src="img/back.png">
+    <a href="/E1/CheckListServlet" id="back">
+        <img src="image/back.png">
     </a>
 
-    <a href="/YuTrip test/CheckListEditServlet" id="go">
+    <a href="/E1/CheckListEditServlet" id="go">
         <編集する>
     </a>
 </div>
@@ -21,12 +24,12 @@
 <br><br><br>
 <div class="koumoku_iti">
     <input id="koumoku" class="textbox" type="text" size="80" disabled value="${cl_value}">
-    <img id="check" " src="img/check_off.png" alt="toggle" di>
+    <img id="check" " src="image/check_off.png" alt="toggle" >
     <br><br><br>
 </div>
 
-<c:forEach var="e" items-"${CheckList }">
-	<input type="text" name="cl_Name" value="${e.cl_Name }"><br>
+<c:forEach begin="0" end="${CheckList.size()}" step="2" var="i">
+	<input type="text" name="cl_Element" value="${e.cl_Element }"><br>
 </c:forEach>
 
 
@@ -35,11 +38,11 @@
     /*　 チェックマーク処理ーーーーーーーーーーーーーーーーーーーーーーーーーー*/
     document.getElementById('check').onclick = function() {
         var image = document.getElementById('check');
-        if (image.src.includes('img/check_off.png')) {
-            image.src = 'img/check_on.png';
+        if (image.src.includes('image/check_off.png')) {
+            image.src = 'image/check_on.png';
         }
         else {
-                image.src = 'img/check_off.png';
+                image.src = 'image/check_off.png';
         }
     }
 
@@ -71,11 +74,11 @@
 
         <!--ロゴ-->
         <a href="">
-            <img src="img/logo_yutoripu2.png" alt="ロゴ" class="logo">
+            <img src="image/logo_yutoripu2.png" alt="ロゴ" class="logo">
         </a>
         <!--ユーザーアイコン-->
         <a href="">
-            <img src="img/OIP (3).jpg" alt="アイコン" class="user-icon">
+            <img src="image/OIP (3).jpg" alt="アイコン" class="user-icon">
         </a>
         <hr class="header_hr">
     </header>
@@ -92,20 +95,20 @@
             <hr>
             <!--画面下アイコン-->
             <div id="footer-tag">
-                <a href="">
-                    <img src="img/home.png" alt="ホーム" class="footer-icon">
+                <a href="/E1/HomeServlet">
+                    <img src="image/home.png" alt="ホーム" class="footer-icon">
                     <p>ホーム</p>
                 </a>
-                <a href="">
-                    <img src="img/chat.png" alt="チャット" class="footer-icon">
+                <a href="/E1/ChatSearchServlet">
+                    <img src="image/chat.png" alt="チャット" class="footer-icon">
                     <p class="nimoji">検索</p>
                 </a>
-                <a href="">
-                    <img src="img/timeline.png" alt="タイムライン" class="footer-icon">
+                <a href="/E1/TimeLineServlet">
+                    <img src="image/timeline.png" alt="タイムライン" class="footer-icon">
                     <p class="nimoji">投稿</p>
                 </a>
                 <a href="CheckListServlet.java">
-                    <img src="img/checklist.png" alt="チェックリスト" class="footer-icon">
+                    <img src="image/checklist.png" alt="チェックリスト" class="footer-icon">
                     <p>持ち物</p>
                 </a>
           </div>
