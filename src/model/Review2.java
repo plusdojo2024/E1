@@ -11,8 +11,7 @@ public class Review2 implements Serializable {
 	private int RV_POINT;
 	private String RV_IMG;
 	private String RV_REMARK;
-	private String Pnickname;
-	private String P_IMG;
+
 	
 	
 	
@@ -23,14 +22,12 @@ public class Review2 implements Serializable {
 		this.RV_POINT = 0;
 		this.RV_IMG = "";
 		this.RV_REMARK  = 	"" ;
-		this.Pnickname="";
-		this.P_IMG ="";
+
 
 	}
 
 	
-	public Review2(int RV_ID, int USER_ID, String RV_ONSENNAME , int RV_POINT, String RV_IMG, String RV_REMARK, String Pnickname,
-			String P_IMG ) {
+	public Review2(int RV_ID, int USER_ID, String RV_ONSENNAME , int RV_POINT, String RV_IMG, String RV_REMARK ) {
 		// TODO 自動生成されたコンストラクター・スタブ
 		this.RV_ID = RV_ID;
 		this.USER_ID = USER_ID;
@@ -38,8 +35,13 @@ public class Review2 implements Serializable {
 		this.RV_POINT = RV_POINT;
 		this.RV_IMG = RV_IMG;
 		this.RV_REMARK  = 	RV_REMARK ;
-		this.Pnickname =Pnickname;
-		this.P_IMG = P_IMG;
+
+	}
+
+
+	public Review2(int USER_ID) {
+		// TODO 自動生成されたコンストラクター・スタブ
+		this.USER_ID = USER_ID;
 	}
 
 
@@ -105,22 +107,8 @@ public class Review2 implements Serializable {
 	}
 
 
-	public String getPnickname() {
-	    return Pnickname;
-	}
-
-	public void setPnickname(String p_NICKNAME) {
-		Pnickname = p_NICKNAME;
-	}
-
-	public String getPIMG() {
-		return P_IMG;
-	}
 
 
-	public void setPIMG(String p_IMG) {
-		P_IMG = p_IMG;
-	}
 	
 }
 

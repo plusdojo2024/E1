@@ -26,7 +26,12 @@ public class Users implements Serializable {
 		this.HIDUKE = HIDUKE;
 
 	}
-
+	public Users(int USER_ID, String P_NICKNAME, String P_IMG) {
+		// TODO 自動生成されたコンストラクター・スタブ
+		this.USER_ID = USER_ID;
+		this.P_NICKNAME = P_NICKNAME;
+		this.P_IMG = P_IMG;
+	}
 	//引数がないコンストラクタ（javaBeansの仕様）
 	public Users() {
 		this.USER_ID = 0;
@@ -39,6 +44,8 @@ public class Users implements Serializable {
 		this.HIDUKE = "";
 
 	}
+
+
 
 	public int getUSER_ID() {
 		return USER_ID;

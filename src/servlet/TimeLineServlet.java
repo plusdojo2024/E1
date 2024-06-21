@@ -40,22 +40,25 @@ public class TimeLineServlet extends HttpServlet {
 //            response.sendRedirect("/bckanri/LoginServlet");
 //            return;
 //        }
-
-        String[] image_path2 = new String[100];
-        String[] image_url2 = new String[100];
-
-        // セッションからIDを取得する場合
-//        int id = (int) session.getAttribute("id");
-
-        // ReviewDaoを使用してレビューリストを取得
         ReviewDao tDao = new ReviewDao();
         List<Review2> TList = tDao.select();
 
         // レビューリストの最初の要素から名前を取得（例として）
-        String name = TList.isEmpty() ? "" : TList.get(0).getPnickname();
+//        String name = TList.isEmpty() ? "" : TList.get(0).getPnickname();
 //        request.setAttribute("name", name);
         request.setAttribute("TList", TList);
 
+      
+//		session.setAttribute("id",tlid);
+		//ここでユーザーデータを二次元配列ユーザーのid[[ユーザーネーム][ユーザーアイコン画像]]
+		String[][] tlud= tDao.selectud(); //
+//		session.setAttribute("tlud", tlud);
+		request.setAttribute("tlud", tlud);
+        // セッションからIDを取得する場合
+//        int id = (int) session.getAttribute$("id");
+
+        // ReviewDaoを使用してレビューリストを取得
+       
         // JSPにフォワード
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/TimeLine.jsp");
         dispatcher.forward(request, response);
