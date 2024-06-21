@@ -23,32 +23,36 @@ public class UsersDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/YuTrip.db", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM USERS WHERE MAILADDRESS = ? AND USER_PW = ?  ORDER BY number";
+			String sql = "SELECT COUNT(*) FROM USERS WHERE MAILADDRESS = ? AND USER_PW = ? ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 
 			// SQL文を完成させる
 			if (card.getMAILADDRESS() != null) {
-				pStmt.setString(1, "%" + card.getMAILADDRESS() + "%");
+				pStmt.setString(1, card.getMAILADDRESS() );
 			}
 			else {
-				pStmt.setString(1, "%");
+				pStmt.setString(1, "");
 			}
 			if (card.getUSER_PW() != null) {
-				pStmt.setString(2, "%" + card.getUSER_PW() + "%");
+				pStmt.setString(2, card.getUSER_PW());
 			}
 			else {
-				pStmt.setString(2, "%");
+				pStmt.setString(2, "");
 			}
 
 
 			// SQL文を実行し、結果表を取得する
-			ResultSet rs = pStmt.executeQuery();
+			
 
 			// 結果表をコレクションにコピーする
+		
+			ResultSet rs = pStmt.executeQuery();
+
+			// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
 			rs.next();
 			if (rs.getInt("COUNT(*)") == 1) {
 				loginResult = true;
@@ -339,7 +343,77 @@ public boolean insert(Users card) {
 
 
 //引数paramで検索項目を指定し、検索結果のリストを返す(登録してあるのを表示)
+//idの取得
 public String selectid(Users card) {
+	Connection conn = null;
+	String cardList = "";
+
+	try {
+		// JDBCドライバを読み込む
+		Class.forName("org.h2.Driver");
+//SELECT ACCOUNTID as id  FROM ACAUNTDB  WHERE USER_PW LIKE ? AND MAILADDRESS LIKE ?
+		// データベースに接続する
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");		// SQL文を準備する
+		String sql = "SELECT USER_ID FROM Users WHERE USER_PW = ? AND 	MAILADDRESS = ? ";
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+		// SQL文を完成させる
+		
+					if (card.getUSER_PW() != null && !card.getUSER_PW().equals("")) {
+						pStmt.setString(1,  card.getUSER_PW());
+					}
+					else {
+						pStmt.setString(1, "");
+					}
+
+					if (card.getMAILADDRESS() != null && !card.getMAILADDRESS().equals("")) {
+						pStmt.setString(2, card.getMAILADDRESS() );
+					}
+					else {
+						pStmt.setString(2, "");
+					}
+
+					// SQL文を実行し、結果表を取得する
+					ResultSet rs = pStmt.executeQuery();
+
+					// 結果表をコレクションにコピーする
+					
+
+					// 結果表をコレクションにコピーする
+					while (rs.next()) {
+						cardList=Integer.toString(rs.getInt("USER_ID"));
+					} 
+
+						
+
+
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+				catch (ClassNotFoundException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+				finally {
+					// データベースを切断
+					if (conn != null) {
+						try {
+							conn.close();
+						}
+						catch (SQLException e) {
+							e.printStackTrace();
+							cardList = null;
+						}
+					}
+				}
+
+				// 結果を返す
+				return cardList;
+			}
+
+//ユーザーネームの取得
+public String selectun(Users card) {
 	Connection conn = null;
 	String cardList = "";
 
@@ -348,28 +422,104 @@ public String selectid(Users card) {
 		Class.forName("org.h2.Driver");
 
 		// データベースに接続する
-		conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/YuTrip.db", "sa", "");
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
 
 		// SQL文を準備する
-		String sql = "SELECT * FROM Users WHERE USER_ID =?  ORDER BY number";
+		String sql = "SELECT P_NICKNAME FROM Users WHERE USER_PW = ? AND 	MAILADDRESS = ?";
 		PreparedStatement pStmt = conn.prepareStatement(sql);
 		// SQL文を完成させる
-					if (card.getUSER_ID() != 0) {
-						pStmt.setString(1, "%" + card.getUSER_ID() + "%");
-					}
-					else {
-						pStmt.setString(1, "0");
-					}
+		if (card.getUSER_PW() != null && !card.getUSER_PW().equals("")) {
+			pStmt.setString(1,  card.getUSER_PW() );
+		}
+		else {
+			pStmt.setString(1, "");
+		}
 
+		if (card.getMAILADDRESS() != null && !card.getMAILADDRESS().equals("")) {
+			pStmt.setString(2,  card.getMAILADDRESS() );
+		}
+		else {
+			pStmt.setString(2, "");
+		}
 
 
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
 
 					// 結果表をコレクションにコピーする
-					 rs.next();
+					while (rs.next()) {
+						cardList = rs.getString("P_NICKNAME");
+					} 
 
-						cardList = Integer.toString(rs.getInt("USER_ID"));
+
+						
+
+
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+				catch (ClassNotFoundException e) {
+					e.printStackTrace();
+					cardList = null;
+				}
+				finally {
+					// データベースを切断
+					if (conn != null) {
+						try {
+							conn.close();
+						}
+						catch (SQLException e) {
+							e.printStackTrace();
+							cardList = null;
+						}
+					}
+				}
+
+				// 結果を返す
+				return cardList;
+			}
+
+//ユーザーアイコンの取得
+public String selectic(Users card) {
+	Connection conn = null;
+	String cardList = "";
+
+	try {
+		// JDBCドライバを読み込む
+		Class.forName("org.h2.Driver");
+
+		// データベースに接続する
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
+
+		// SQL文を準備する
+		String sql = "SELECT P_IMG FROM Users WHERE USER_PW = ? AND 	MAILADDRESS = ?";
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+		// SQL文を完成させる
+		if (card.getUSER_PW() != null && !card.getUSER_PW().equals("")) {
+			pStmt.setString(1, card.getUSER_PW() );
+		}
+		else {
+			pStmt.setString(1, "");
+		}
+
+		if (card.getMAILADDRESS() != null && !card.getMAILADDRESS().equals("")) {
+			pStmt.setString(2,  card.getMAILADDRESS());
+		}
+		else {
+			pStmt.setString(2, "");
+		}
+
+
+					// SQL文を実行し、結果表を取得する
+					ResultSet rs = pStmt.executeQuery();
+
+					// 結果表をコレクションにコピーする
+					while (rs.next()) {
+						cardList = rs.getString("P_IMG");
+					} 
+					
 
 
 				}

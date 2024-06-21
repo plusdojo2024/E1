@@ -58,7 +58,7 @@
 
   /* [ログイン]ボタンをクリックしたときの処理 */
   formObj.onsubmit = function() {
-    if (!formObj.id.value || !formObj.pw.value) {
+    if (!formObj.log.value = null || !formObj.pw.value = null) {
       errorMessageObj.textContent = '※IDとパスワードを入力してください！';
       return false;
     }

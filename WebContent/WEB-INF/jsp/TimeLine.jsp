@@ -46,7 +46,7 @@
     </div>
     <!-- ユーザーネーム -->
     <div id="p_Nickname">
-      <p>ユーザーネーム</p>
+      <p>ユーザーネーム: ${e.Pnickname}</p>
     </div>
     <!-- レビュー文の表示 -->
     <div id="rv_remark">

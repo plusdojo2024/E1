@@ -114,7 +114,7 @@
 <!--セッションにデータが入ってるからforで回してデータを繰り返し表示する。  -->
 <c:forEach var="e" items= "${CList}">
 <div class="commentlist">
-<div id="come"><img src="../../E1/image/OIP (3).jpg" alt="icon" class="icon"></div>
+<div id="come"><img src="../../E1/image/${e.P_IMG}" alt="icon" class="icon"></div>
 <p class="name"> ユーザー：${e.P_NICKNAME} </p>
 <p class="coment">${e.comment}</p>
 

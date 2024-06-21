@@ -51,12 +51,15 @@ public class LoginServlet extends HttpServlet {
 
 				// ログイン処理を行う
 				UsersDao iDao = new UsersDao();
-				if (iDao.isLoginOK(new Users(0,USER_PW,MAILADDRESS,null,null,null,null,null
-						))) {	// ログイン成功
+				if (iDao.isLoginOK(new Users(0,USER_PW,MAILADDRESS,null,null,null,null,null))) {	// ログイン成功
 					// セッションスコープにIDを格納する
 					HttpSession session = request.getSession();
 					String id= iDao.selectid(new Users(0,USER_PW,MAILADDRESS,null,null,null,null,null)); //
 					session.setAttribute("id",id);
+					String un= iDao.selectun(new Users(0,USER_PW,MAILADDRESS,null,null,null,null,null)); //
+					session.setAttribute("un",un);
+					String ic= iDao.selectic(new Users(0,USER_PW,MAILADDRESS,null,null,null,null,null)); //
+					session.setAttribute("ic",ic);
 
 					// メニューサーブレットにリダイレクトする
 					response.sendRedirect("/E1/LoginServlet");
@@ -67,9 +70,10 @@ public class LoginServlet extends HttpServlet {
 					//new ("ログイン失敗！", "IDまたはPWに間違いがあります。", "/E1/LoginServlet"));
 
 					// 結果ページにフォワードする
-					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/TimeLine.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp");
 					dispatcher.forward(request, response);
 				}
+
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

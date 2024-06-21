@@ -13,6 +13,8 @@ public class Review implements Serializable {
 	private String RV_HIDUKE;
 	private int RV_IINECHECK;
 	private int RV_BOOK;
+	private String P_NICKNAME;
+	private String P_IMG;
 	
 
 	public Review(int RV_ID, int USER_ID, String RV_ONSENNAME, int RV_POINT, String RV_DAY, String RV_IMG, String RV_REMARK, String RV_HIDUKE, int RV_IINECHECK, int RV_BOOK) {
@@ -38,10 +40,32 @@ public class Review implements Serializable {
 		this.RV_HIDUKE = "";
 		this.RV_IINECHECK = 0;
 		this.RV_BOOK =0;
+		this.P_NICKNAME="";
+		this.P_IMG ="";
 
 	}
 
 	
+	public Review(int RV_ID, int USER_ID, String RV_ONSENNAME , int RV_POINT, String RV_IMG, String RV_REMARK, String P_NICKNAME,
+			String P_IMG ) {
+		// TODO 自動生成されたコンストラクター・スタブ
+		this.RV_ID = RV_ID;
+		this.USER_ID = USER_ID;
+		this.RV_ONSENNAME = RV_ONSENNAME;
+		this.RV_POINT = RV_POINT;
+		this.RV_IMG = RV_IMG;
+		this.RV_REMARK  = 	RV_REMARK ;
+		this.P_NICKNAME =P_NICKNAME;
+		this.P_IMG = P_IMG;
+	}
+	public String P_IMG() {
+		return this.P_IMG;
+	}
+
+	public void P_IMG(String P_IMG) {
+		this.P_IMG = P_IMG;
+	}
+
 	public int getRV_ID() {
 		return RV_ID;
 	}
@@ -122,7 +146,6 @@ public class Review implements Serializable {
 		RV_BOOK = rV_BOOK;
 	}
 
-	
-	
+
 
 }
