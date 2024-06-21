@@ -8,8 +8,7 @@
 <link rel="stylesheet" href="/E1/css/TimeLine.css">
 </head>
 <body>
-<!--header-->
-<!--htmlの<body>の最初に挿入-->
+
   <header class="header">
 
     <!--ロゴ-->
@@ -24,7 +23,6 @@
 </header>
 
 
-<!--headerここまで-->
 
 
 
@@ -39,14 +37,24 @@
     </div>
   </div>
  <c:forEach var="e" items="${TList}">
+ <c:forEach var="c" items="${tlud}">
+ 
+ <c:choose>
+  <c:when test="${e.USER_ID == c.tlud[0][0]}">
+    有料会員
+  </c:when>
+  <c:when test="${e.USER_ID != c.tlud[0][0]}">
+    プレミアム会員
+  </c:when>
+  <c:otherwise">
+    無料会員
+  </c:otherwise>
+</c:choose>
   <div class="TimeLine">
-    <!-- ユーザーアイコン-->
-    <div id="p_Img">
-		<img src="vv">
+<img src="../../E1/image/${tlud[0][1]}">
     </div>
-    <!-- ユーザーネーム -->
     <div id="p_Nickname">
-      <p>ユーザーネーム: ${e.Pnickname}</p>
+      <p>ユーザーネーム:${tlud[0][2]}</p>
     </div>
     <!-- レビュー文の表示 -->
     <div id="rv_remark">
@@ -55,7 +63,7 @@
         <p>${e.RV_REMARK}</p>
       </div>
     </div>
-    <!-- 評価★５段階 -->
+  
 
     <div id="rv_point">
       <h2>五段階評価</h2>
@@ -76,7 +84,7 @@
     <div id="rv_img">
       <h2>動画・画像</h2>
        <script>
-        document.write('<img src="../../E1/image/${e.RV_IMG}">');
+        document.write('<img src="/E1/image/${e.RV_IMG}">');
       </script>
 
     </div>
@@ -108,14 +116,12 @@
 
 
   </div>
-  
+  <c:if test="${e.USER_ID == c.tlud[0][0]}">
+  </c:if>
+ </c:forEach> 
   </c:forEach>
-      <!--footerここまで-->
     </body>
-<!--htmlの<body>の最後に挿入
-        もしかしたら作った画面と被るかもしれないので、その時は作った画面の一番下のコンテンツのcssに
-        margin-bottom:10vh;
-        を入れてみてください-->
+
 
         <footer id="footer">
           <div id="footer-wrapper">
