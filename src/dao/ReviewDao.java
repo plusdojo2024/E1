@@ -7,41 +7,48 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import model.Review;
-import model.Review2;
+
 
 public class ReviewDao {
 	//表示
-	public List<Review2> select() {
+	public List<Review> select() {
 		Connection conn = null;
-		List<Review2> Timeline = new ArrayList<Review2>();
+		List<Review> Timeline = new ArrayList<Review>();
 
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1/E1", "sa", "");
 			 Statement statement = conn.createStatement();
 
 			// SQL文を準備する
-			String sql = "SELECT RV_ID, USER_ID, RV_ONSENNAME,RV_POINT,RV_IMG,RV_REMARK FROM   REVIEW ; ";
+			//String sql = "SELECT RV_ID,USER_ID,RV_ONSENNAME,RV_POINT,RV_IMG,RV_REMARK FROM   REVIEW ; ";
+			String sql = "SELECT * FROM  REVIEW";
 			ResultSet rs = statement.executeQuery(sql);
 			// SQL文を完成させる
 
 			// SQL文を実行し、結果表を取得する
-			
+
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
-				Review2 record = new Review2(
+				Review record = new Review(
 						rs.getInt("RV_ID"),
 						rs.getInt("USER_ID"),
 						rs.getString("RV_ONSENNAME"),
 						rs.getInt("RV_POINT"),
+						rs.getString("RV_DAY"),
 						rs.getString("RV_IMG"),
-						rs.getString("RV_REMARK")
+						rs.getString("RV_REMARK"),
+						rs.getString("RV_HIDUKE"),
+						rs.getInt("RV_IINECHECK"),
+						rs.getInt("RV_BOOK")
 						);
 				Timeline.add(record);
 			}
@@ -52,13 +59,13 @@ public class ReviewDao {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			Timeline = null;
-		} 
+		}
 
 		// 結果を返す
 		return Timeline;
 	}
-	
-	
+
+
 	//タイムライン用のid取得のselectidtl
 	public String[] selectidtl() {
 		Connection conn = null;
@@ -69,7 +76,7 @@ public class ReviewDao {
 			Class.forName("org.h2.Driver");
 	//SELECT ACCOUNTID as id  FROM ACAUNTDB  WHERE USER_PW LIKE ? AND MAILADDRESS LIKE ?
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");		// SQL文を準備する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1/E1", "sa", "");		// SQL文を準備する
 			String sql = "SELECT USER_ID FROM REVIEW ; ";
 			 Statement statement = conn.createStatement();
 			 // SQL文を完成させる
@@ -77,7 +84,7 @@ public class ReviewDao {
 			 ResultSet rs = statement.executeQuery(sql);
 
 						// 結果表をコレクションにコピーする
-						
+
 
 						// 結果表をコレクションにコピーする
 			 int i=0;
@@ -86,9 +93,6 @@ public class ReviewDao {
 					cardList[i]=Integer.toString( rs.getInt("USER_ID"));
 					i++;
 				}
-						
-							
-
 
 					}
 					catch (SQLException e) {
@@ -115,65 +119,56 @@ public class ReviewDao {
 					// 結果を返す
 					return cardList;
 				}
-	
+
 	//ユーザーネームの引き出し
-	public String[][] selectud() {
-		Connection conn = null;
-		String[][]Timeline;
+	public Map<Integer, String> selectud() {
+	    Connection conn = null;
+	    Map<Integer, String> Timeline = new HashMap<>();
 
-		try {
-			// JDBCドライバを読み込む
-			Class.forName("org.h2.Driver");
+	    try {
+	        // JDBCドライバを読み込む
+	        Class.forName("org.h2.Driver");
 
-			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
-			
+	        // データベースに接続する
+	        conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1/E1", "sa", "");
 
-			// SQL文を準備する
-			String sql = "SELECT  USER_ID, P_NICKNAME, P_IMG FROM USERS W ?cardList[i]  ; ";
-			 Statement statement = conn.createStatement();
-			 // SQL文を完成させる
-						// SQL文を実行し、結果表を取得する
-			 String[] name = null;
-			 String[] img = null;
-			 int x=0;
-			 ResultSet rs = statement.executeQuery(sql);
-			 int i=0;
-			 while (rs.next()) {
-				 x =rs.getInt("USER_ID");
-				 String d =rs.getString("P_NICKNAME");
-				 d =rs.getString("P_IMG");
-			}
-			 Timeline = new String[x+1][2];
-			 Timeline[0][0]="ユーザーなし";
-			 Timeline[0][1]="ユーザーなし";
-			 conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
-			 sql = "SELECT  USER_ID, P_NICKNAME, P_IMG FROM USERS  ; ";
-			 statement = conn.createStatement();
-			 rs = statement.executeQuery(sql);
-			 String a=null;
-			 while(rs.next()) {
-				 x =rs.getInt("USER_ID");
-				 a =rs.getString("P_NICKNAME");
-				 Timeline[i][0]=Integer.toString(x);
-				 Timeline[i][1]=a;
-				 a=rs.getString("P_IMG"); 
-				 Timeline[i][2]=a;
-				 i++;
+	        // SQL文を準備する
+	        String sql = "SELECT  REVIEW.RV_ID ,REVIEW.USER_ID ,REVIEW.RV_IMG ,REVIEW.RV_REMARK ,REVIEW.RV_HIDUKE ,"
+	                + " REVIEW.RV_IINECHECK ,REVIEW .RV_REMARK ,USERS.P_NICKNAME,USERS.P_IMG "
+	                + " FROM REVIEW  INNER JOIN USERS ON REVIEW.USER_ID =  USERS .USER_ID";
 
-			 }
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-			Timeline = null;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			Timeline = null;
-		} 
+	        Statement statement = conn.createStatement();
+	        // SQL文を完成させる
+	        // SQL文を実行し、結果表を取得する
 
-		// 結果を返す
-		return Timeline;
+	        ResultSet rs = statement.executeQuery(sql);
+
+	        while (rs.next()) {
+	            String temp = rs.getInt("USER_ID") + "," + rs.getString("P_NICKNAME") + "," + rs.getString("P_IMG")
+	                         +  "," +rs.getString("RV_REMARK") +  "," + rs.getString("RV_HIDUKE");
+	            int number = rs.getInt("RV_ID");
+	            //System.out.println("番号:" + number);
+	            Timeline.put(number, temp);
+	        }
+
+	        // No need to execute the query again
+	        // statement = conn.createStatement();
+	        // rs = statement.executeQuery(sql);
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	        // Don't set Timeline to null, instead return an empty map
+	        return new HashMap<>();
+	    } catch (ClassNotFoundException e) {
+	        e.printStackTrace();
+	        // Don't set Timeline to null, instead return an empty map
+	        return new HashMap<>();
+	    }
+
+	    // 結果を返す
+	    return Timeline;
 	}
+
 	//登録
 	public boolean insert(Review card) {
 		boolean result = false;
@@ -185,55 +180,55 @@ public class ReviewDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1/E1", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 			String sql = "INSERT INTO Review VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getUSER_ID() != 0) {
-				pStmt.setString(1,Integer.toString(card.getUSER_ID()));
+			if (card.getUserId() != 0) {
+				pStmt.setString(1,Integer.toString(card.getUserId()));
 			} else {
 				pStmt.setString(1, "0");
 			}
-			if (card.getRV_ONSENNAME() != null && !card.getRV_ONSENNAME().equals("")) {
-				pStmt.setString(2, card.getRV_ONSENNAME());
+			if (card.getRvOnsenName() != null && !card.getRvOnsenName().equals("")) {
+				pStmt.setString(2, card.getRvOnsenName());
 			} else {
 				pStmt.setString(2, "（未設定）");
 			}
-			if (card.getRV_POINT() != 0) {
-				pStmt.setString(3, Integer.toString(card.getRV_POINT()));//Intのときにif文で何を入れるか松川さんに聞く
+			if (card.getRvPoint() != 0) {
+				pStmt.setString(3, Integer.toString(card.getRvPoint()));//Intのときにif文で何を入れるか松川さんに聞く
 			} else {
 				pStmt.setString(3, "0");
 			}
-			if (card.getRV_DAY() != "") {
-				pStmt.setString(4, card.getRV_DAY());
+			if (card.getRvDay() != "") {
+				pStmt.setString(4, card.getRvDay());
 			} else {
 				pStmt.setString(4, "（未設定）");
 			}
-			if (card.getRV_IMG() != null && !card.getRV_IMG().equals("")) {
-				pStmt.setString(5, card.getRV_IMG());
+			if (card.getRvImg() != null && !card.getRvImg().equals("")) {
+				pStmt.setString(5, card.getRvImg());
 			} else {
 				pStmt.setString(5, "（未設定）");
 			}
-			if (card.getRV_REMARK() != null && !card.getRV_REMARK().equals("")) {
-				pStmt.setString(6, card.getRV_REMARK());
+			if (card.getRvRemark() != null && !card.getRvRemark().equals("")) {
+				pStmt.setString(6, card.getRvRemark());
 			} else {
 				pStmt.setString(6, "（未設定）");
 			}
-			if (card.getRV_HIDUKE() != "") {
-				pStmt.setString(7, card.getRV_HIDUKE());
+			if (card.getRvHiduke() != "") {
+				pStmt.setString(7, card.getRvHiduke());
 			} else {
 				pStmt.setString(7, "0");
 			}
-			if (card.getRV_IINECHECK() != 0) {
-				pStmt.setString(8, Integer.toString(card.getRV_IINECHECK()));
+			if (card.getRvIineCheck() != 0) {
+				pStmt.setString(8, Integer.toString(card.getRvIineCheck()));
 			} else {
 				pStmt.setString(8, "0");
 			}
-			if (card.getRV_BOOK() != 0) {
-				pStmt.setString(9, Integer.toString(card.getRV_BOOK()));
+			if (card.getRvBook() != 0) {
+				pStmt.setString(9, Integer.toString(card.getRvBook()));
 			} else {
 				pStmt.setString(9, "0");
 			}
@@ -269,57 +264,57 @@ public class ReviewDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1/E1", "sa", "");
 
 			// SQL文を準備する
 			String sql = "UPDATE Review SET RV_ONSENNAME=?, RV_POINT=?, RV_DAY=?, RV_IMG=?, RV_REMARK=?, RV_HIDUKE=?, RV_IINECHECK=?, RV_BOOK=?" ;
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (card.getRV_ONSENNAME() != null && !card.getRV_ONSENNAME().equals("")) {
-				pStmt.setString(1, card.getRV_ONSENNAME());
+			if (card.getRvOnsenName() != null && !card.getRvOnsenName().equals("")) {
+				pStmt.setString(1, card.getRvOnsenName());
 			}else {
 				pStmt.setString(1, null);
 			}
 
-			if (card.getRV_POINT() != 0) {
-				pStmt.setString(2,Integer.toString(card.getRV_POINT()));
+			if (card.getRvPoint() != 0) {
+				pStmt.setString(2,Integer.toString(card.getRvPoint()));
 			}else {
 				pStmt.setString(2, null);
 			}
 
-			if (card.getRV_DAY() != "") {
-				pStmt.setString(3,card.getRV_DAY());
+			if (card.getRvDay() != "") {
+				pStmt.setString(3,card.getRvDay());
 			}else {
 				pStmt.setString(3, null);
 			}
 
-			if (card.getRV_IMG() != null && !card.getRV_IMG().equals("")) {
-				pStmt.setString(4, card.getRV_IMG());
+			if (card.getRvImg() != null && !card.getRvImg().equals("")) {
+				pStmt.setString(4, card.getRvImg());
 			}else {
 				pStmt.setString(4, null);
 			}
 
-			if (card.getRV_REMARK() != null && !card.getRV_REMARK().equals("")) {
-				pStmt.setString(5, card.getRV_REMARK());
+			if (card.getRvRemark() != null && !card.getRvRemark().equals("")) {
+				pStmt.setString(5, card.getRvRemark());
 			}else {
 				pStmt.setString(5, null);
 			}
 
-			if (card.getRV_HIDUKE() != "") {
-				pStmt.setString(6,card.getRV_HIDUKE());
+			if (card.getRvHiduke() != "") {
+				pStmt.setString(6,card.getRvHiduke());
 			}else {
 				pStmt.setString(6, null);
 			}
 
-			if (card.getRV_IINECHECK() != 0) {
-				pStmt.setString(7,Integer.toString(card.getRV_IINECHECK()));
+			if (card.getRvIineCheck() != 0) {
+				pStmt.setString(7,Integer.toString(card.getRvIineCheck()));
 			}else {
 				pStmt.setString(7, null);
 			}
 
-			if (card.getRV_BOOK() != 0) {
-				pStmt.setString(8,Integer.toString(card.getRV_BOOK()));
+			if (card.getRvBook() != 0) {
+				pStmt.setString(8,Integer.toString(card.getRvBook()));
 			}else {
 				pStmt.setString(8, null);;
 
@@ -352,7 +347,7 @@ public class ReviewDao {
 
 	}
 	//温泉の件数を最大値を持ってくる
-	
+
 	public int count() {
 		Connection conn = null;
 		int count = 0;
@@ -363,7 +358,7 @@ public class ReviewDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1/E1", "sa", "");
 
 			// SQL文を準備する
 			String sql = "SELECT COUNT(*) FROM ONSEN ";
@@ -374,10 +369,10 @@ public class ReviewDao {
 			// SQL文を完成させる
 
 			// SQL文を実行し、結果表を取得する
-			
+
 
 			// 結果表をコレクションにコピーする
-		
+
 
 			// ユーザーIDとパスワードが一致するユーザーがいたかどうかをチェックする
 			rs.next();
@@ -407,7 +402,7 @@ public class ReviewDao {
 		// 結果を返す
 		return count;
 	}
-	
+
 	//ランダムで温泉データを引き出してくる
 	public String[] selectos(int a) {
 		Connection conn = null;
@@ -419,26 +414,26 @@ public class ReviewDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1/E1", "sa", "");
 
 			// SQL文を準備する
 			String sql = "SELECT HS_ID,ONSEN_NAME,HS_IMG  FROM ONSEN ";
 			Statement statement = conn.createStatement();
 			ResultSet rs = statement.executeQuery(sql);
 
-			
+
 			// SQL文を完成させる
 
 			// SQL文を実行し、結果表を取得する
-			
+
 			String[][] kari = null;
 			// 結果表をコレクションにコピーする
 			int i =0;
 			 while(rs.next()) {
-				 
+
 				 kari[i][0] =  Integer.toString(rs.getInt("HS_ID"));
 				 kari[i][1] = rs.getString("ONSEN_NAME");
-				 kari[i][2] =	rs.getString("HS_IMG");	 
+				 kari[i][2] =	rs.getString("HS_IMG");
 				 i++;
 			 }
 
