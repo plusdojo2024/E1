@@ -12,7 +12,7 @@ import model.OnsenData;
 
 public class OnsensearchDao {
 	// 引数paramで検索項目を指定し、検索結果のリストを返す
-			public List<OnsenData> select(OnsenData card) {
+			public List<OnsenData> select(String HS_ADDRESS, String HS_EFFECT, String HS_ROTEN, String HS_KEIKAN, String HS_KYAKUSITUBURO) {
 				Connection conn = null;
 				List<OnsenData> cardList = new ArrayList<OnsenData>();
 
@@ -24,33 +24,14 @@ public class OnsensearchDao {
 					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E1", "sa", "");
 
 					// SQL文を準備する
-					String sql = "SELECT * FROM ONSEN WHERE hs_address LIKE ? AND hs_roten LIKE ? AND hs_keikan LIKE ? AND hs_kyakuburo LIKE ? ORDER BY hs_id ";
+					String sql = "SELECT * FROM ONSEN WHERE hs_address LIKE ? And HS_Effect Like ? AND hs_roten LIKE ? AND hs_keikan LIKE ? AND hs_kyakuburo LIKE ? ORDER BY hs_id ";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
-					if (card.getHS_ADDRESS() != null) {
-		                pStmt.setString(1, "%" + card.getHS_ADDRESS() + "%");
-		            }
-		            else {
-		                pStmt.setString(1, "%");
-		            }
-		            if (card.getHS_ROTEN() != null) {
-		                pStmt.setString(2, "%" + card.getHS_ROTEN() + "%");
-		            }
-		            else {
-		                pStmt.setString(2, "%");
-		            }
-		            if (card.getHS_KEIKAN() != null) {
-		                pStmt.setString(3, "%" + card.getHS_KEIKAN() + "%");
-		            }
-		            else {
-		                pStmt.setString(3, "%");
-		            }
-		            if (card.getHS_KYAKUBURO() != null) {
-		                pStmt.setString(4, "%" + card.getHS_KYAKUBURO() + "%");
-		            }
-		            else {
-		                pStmt.setString(4, "%");
-		            }
+					pStmt.setString(1,HS_ADDRESS );
+					pStmt.setString(2,HS_EFFECT );
+					pStmt.setString(3,HS_ROTEN );
+					pStmt.setString(4,HS_KEIKAN );
+					pStmt.setString(5,HS_KYAKUSITUBURO );
 
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();
