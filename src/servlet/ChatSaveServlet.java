@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.OnsensearchDao;
-import model.ChatData;
 import model.OnsenData;
 
 /**
@@ -39,7 +36,7 @@ public class ChatSaveServlet extends HttpServlet {
 
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ChatSearchResult.jsp");
 				dispatcher.forward(request, response);
-				innsa-toiru
+
 	}
 
 

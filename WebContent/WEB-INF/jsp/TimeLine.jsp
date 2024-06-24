@@ -36,22 +36,11 @@
 
     </div>
   </div>
- <c:forEach var="e" items="${TList}">
- <c:forEach var="c" items="${tlud}">
+<c:forEach var="e" items="${TList}" >
  
- <c:choose>
-  <c:when test="${e.USER_ID == c.tlud[0][0]}">
-    有料会員
-  </c:when>
-  <c:when test="${e.USER_ID != c.tlud[0][0]}">
-    プレミアム会員
-  </c:when>
-  <c:otherwise">
-    無料会員
-  </c:otherwise>
-</c:choose>
+ 
   <div class="TimeLine">
-<img src="../../E1/image/${tlud[0][1]}">
+<img src="../../E1/image/">
     </div>
     <div id="p_Nickname">
       <p>ユーザーネーム:${tlud[0][2]}</p>
@@ -60,7 +49,9 @@
     <div id="rv_remark">
       <h2>レビュー</h2>
       <div id="rv_honbun">
-        <p>${e.RV_REMARK}</p>
+        <p>${e.rvOnsenName}</p>
+        <br>
+        <p>${e.rvRemark}</p>
       </div>
     </div>
   
@@ -68,25 +59,22 @@
     <div id="rv_point">
       <h2>五段階評価</h2>
       <div class="rate-form">
-        <input id="star5" type="radio" name="rv_point" value="5">
+        <input id="star5" type="radio" name="rv_point" value="${e.rvPoint}">
         <label for="star5">★</label>
-        <input id="star4" type="radio" name="rv_point" value="4">
+        <input id="star4" type="radio" name="rv_point" value="${e.rvPoint}">
         <label for="star4">★</label>
-        <input id="star3" type="radio" name="rv_point" value="3">
+        <input id="star3" type="radio" name="rv_point" value="${e.rvPoint}">
         <label for="star3">★</label>
-        <input id="star2" type="radio" name="rv_point" value="2">
+        <input id="star2" type="radio" name="rv_point" value="${e.rvPoint}">
         <label for="star2">★</label>
-        <input id="star1" type="radio" name="rv_point" value="1">
+        <input id="star1" type="radio" name="rv_point" value="${e.rvPoint}">
         <label for="star1">★</label>
       </div>
     </div>
     <!-- ユーザー側の乗せた画像・動画の表示 -->
     <div id="rv_img">
       <h2>動画・画像</h2>
-       <script>
-        document.write('<img src="/E1/image/${e.RV_IMG}">');
-      </script>
-
+       <img src="${e.rvImg}">
     </div>
     <div class="bt">
     <div class="itemsbt">
