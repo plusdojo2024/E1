@@ -54,6 +54,7 @@ public class ChatSearchServlet extends HttpServlet {
     resp.setCharacterEncoding("UTF-8");
     resp.getWriter().write(new ObjectMapper().writeValueAsString(Map.of("result", result)));
 
+    //結果を結果画面にリダイレクト
     resp.sendRedirect("E1/ChatSaveServlet?answer=" + result);
   }
 
