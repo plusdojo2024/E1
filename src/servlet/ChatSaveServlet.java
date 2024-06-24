@@ -40,6 +40,8 @@ public class ChatSaveServlet extends HttpServlet {
 	}
 
 
+
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -49,22 +51,25 @@ public class ChatSaveServlet extends HttpServlet {
 
 	// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
-			String User_chat = request.getParameter("User_chat");
-			String hs_address=request.getParameter("hs_address");
-			String hs_roten = request.getParameter("hs_roten");
-			String hs_keikan = request.getParameter("hs_keikan");
-			String hs_kyakuburo = request.getParameter("hs_kyakuburo");
 
 
-			//	検索処理を行う
-				OnsensearchDao cDao =new OnsensearchDao();
-			List<OnsenData> OnsenData = cDao.select(new OnsenData(0,"",hs_address,"","","","","",hs_roten,hs_keikan,hs_kyakuburo));
+			    // answerssから正規表現でDB内を検索して答えを導き出す。
+			      String HS_Address = request.getParameter("HS_Address");
+			      String HS_Effect = request.getParameter("HS_Effect");
+			      String HS_Roten = request.getParameter("HS_Roten");
+			      String HS_Keikan = request.getParameter("HS_Keikan");
+			      String HS_Kyakusituburo = request.getParameter("HS_Kyakusituburo");
+				OnsensearchDao OSD = new OnsensearchDao();
+				List<OnsenData> searchList = OSD.select(HS_Address, HS_Effect, HS_Roten, HS_Keikan, HS_Kyakusituburo);
+
+
 
 	        // 検索結果をリクエストスコープに格納する
-	        request.setAttribute("OnsenData",OnsenData );
+	        request.setAttribute("searchList",searchList );
 
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/SearchResult.jsp");
 			dispatcher.forward(request, response);
 			}
+
 }
 
