@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.CheckListViewDAO;
-import model.CheckList;
+import model.CheckListStart;
 
 /**
  * Servlet implementation class SearchServlet
@@ -36,7 +36,7 @@ public class CheckListServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		int User_Id = 1 ;//Integer.parseInt(request.getParameter("User_Id"));
 		CheckListViewDAO clvDao = new CheckListViewDAO();
-		List<CheckList> CheckList = clvDao.select(User_Id);
+		List<CheckListStart> CheckList = clvDao.select(User_Id);
 		// 検索ページにフォワードする
 		request.setAttribute("CheckList", CheckList);
 
@@ -56,8 +56,11 @@ public class CheckListServlet extends HttpServlet {
 			return;
 		}
 */
-		String cl_Name = "家電" ;//Integer.parseInt(request.getParameter("User_Id"));
-		request.setAttribute("家電", cl_Name);
+		String User_Id = request.getParameter("User_Id");
+		String cl_Name = request.getParameter("cl_Name");
+		System.out.println("名前"+cl_Name);
+		request.setAttribute("cl_Name", cl_Name);
+
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckListView.jsp");
 		dispatcher.forward(request, response);

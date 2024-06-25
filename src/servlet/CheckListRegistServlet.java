@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,34 +10,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.CheckListDAO;
-import model.CheckList;
-
-
 /**
- * Servlet implementation class UpdateDeleteServlet
+ * Servlet implementation class SearchServlet
  */
-@WebServlet("/CheckListEditServlet")
-public class CheckListEditServlet extends HttpServlet {
+@WebServlet("/CheckListRegistServlet")
+public class CheckListRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+/*
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-/*
 		if (session.getAttribute("User_Id") == null) {
 			response.sendRedirect("/E1/LoginServlet");
 			return;
 		}
 */
+		request.setCharacterEncoding("UTF-8");
 
 
-		// 検索ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckListEdit.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckListRegist.jsp");
 		dispatcher.forward(request, response);
 	}
 
@@ -55,19 +49,7 @@ public class CheckListEditServlet extends HttpServlet {
 		}
 */
 
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-
-		// ここから改造
-		String cl_Name =request.getParameter("cl_Name"); //"家電";
-
-		CheckListDAO clDao = new CheckListDAO();
-		List<CheckList> CheckList = clDao.select(cl_Name);
-		request.setAttribute("CheckList", CheckList);
-		request.setAttribute("cl_Name", cl_Name);
-
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckListEdit.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckList.jsp");
 		dispatcher.forward(request, response);
 	}
 }

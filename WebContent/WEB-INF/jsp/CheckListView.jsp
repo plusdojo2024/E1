@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,34 +9,39 @@
 </head>
 
 <body>
-<br><br><br><br><br><br><br><br><br>
+<br><br><br><br>
 <div id="Edit">
     <a href="/E1/CheckListServlet" id="back">
         <img src="image/back.png">
     </a>
 
-    <a href="/E1/CheckListEditServlet" id="go">
-        <編集する>
+	<a href="/E1/CheckListEditServlet" id="go">
+<編集する>
     </a>
 </div>
 
-<br><br><br>
-<div class="koumoku_iti">
-    <input id="koumoku" class="textbox" type="text" size="80" disabled value="${cl_value}">
-    <img id="check" " src="image/check_off.png" alt="toggle" >
-    <br><br><br>
+<br>
+<div class="midasi">
+・${cl_Name}
 </div>
 
-<c:forEach begin="0" end="${CheckList.size()}" step="2" var="i">
-	<input type="text" name="cl_Element" value="${e.cl_Element }"><br>
+<div class="koumoku_iti">
+<c:set var="end" value="${CheckList.size() - 1}" />
+<c:if test="${end >= 0}">
+<c:forEach begin="0" end="${CheckList.size() - 1}" step="1" var="i">
+    <input id="koumoku" class="textbox" type="text" size="50" disabled value="${CheckList[i].cl_Element }">
+    <img class="check" " src="image/check_off.png" alt="toggle" >
 </c:forEach>
+</c:if>
+</div>
+
 
 
 
 <script>
     /*　 チェックマーク処理ーーーーーーーーーーーーーーーーーーーーーーーーーー*/
-    document.getElementById('check').onclick = function() {
-        var image = document.getElementById('check');
+    document.getElementByClassName('check').onclick = function() {
+        var image = document.getElementByclass('check');
         if (image.src.includes('image/check_off.png')) {
             image.src = 'image/check_on.png';
         }

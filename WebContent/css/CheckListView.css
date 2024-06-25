@@ -1,5 +1,11 @@
-body {
+html{
+    font-size: 40px;
+    font-family: sans-serif;
+}
 
+
+body {
+	background-color: #FCF9EF;
 }
 /* 一覧表示 =========================================================================================*/
 #kago {
@@ -8,6 +14,24 @@ body {
     size: 110px;
 }
 
+.midasi {
+	font-size: 60px;
+}
+
+.itiran_form {
+	text-align: center;
+}
+
+.itiran_text {
+	text-align: center;
+	font-size: 50px;
+}
+
+.detail {
+	text-align: center;
+	font-size: 50px;
+	margin-left: 25px
+}
 
 
 
@@ -17,7 +41,7 @@ body {
 }
 
 #go {
-  margin-left: 420px;
+  margin-left: 470px;
 }
 
 #back {
@@ -27,14 +51,14 @@ body {
 
 .koumoku_iti {
     text-align: center;
-    background-color: #FCF9EF;
     margin: 15px;
 }
+
 
 #koumoku {
     line-height: 10;
 	  box-sizing: border-box;
-	  border: 5px solid #1b2538;
+	  border: 10px solid #1b2538;
 	  border-radius: 4px;
     margin-top: 40px;
     margin-left: 40px;
@@ -44,7 +68,7 @@ body {
 
 }
 
-#check {
+.check {
     width: 65px;
     height: 65px;
     margin-left: 30px;
@@ -55,9 +79,9 @@ body {
 
 /* 上下のテンプレート===============================================================================*/
 #header{
-    background-color: white;
+    background-color: white !important;
     position:static;
-    height:10vh; 
+    height:10vh;
     width:100%;
 }
 
@@ -88,12 +112,12 @@ body {
 
 
 #footer{
-    background-color: white;
+    background-color: white !important;
     position:fixed;
     bottom:0;
     height:10vh; /*�t�b�^�[�̍���*/
     width:100%;
- 
+
   }
 
 #footer-tag {
@@ -116,7 +140,7 @@ body {
   position:absolute;
   font-size:40px;
   color:black;
-  background-color: white;
+  background-color: white !important;
   border:solid;
   border-color: black;
   border-radius: 12px;
