@@ -3,147 +3,136 @@ package model;
 import java.io.Serializable;
 
 public class Review implements Serializable {
-	private int RV_ID ;		// レビューID
-	private int USER_ID;	// ユーザーID
-	private String RV_ONSENNAME;	// レビュー温泉
-	private int RV_POINT;
-	private String RV_DAY;
-	private String RV_IMG;
-	private String RV_REMARK;
-	private String RV_HIDUKE;
-	private int RV_IINECHECK;
-	private int RV_BOOK;
-	private String P_NICKNAME;
-	private String P_IMG;
-	
+	private int rvId ;		// レビューID
+	private int userId;	// ユーザーID
+	private String rvOnsenName;	// レビュー温泉
+	private int rvPoint;
+	private String rvDay;
+	private String rvImg;
+	private String rvRemark;
+	private String rvHiduke;
+	private int rvIineCheck;
+	private int rvBook;
 
-	public Review(int RV_ID, int USER_ID, String RV_ONSENNAME, int RV_POINT, String RV_DAY, String RV_IMG, String RV_REMARK, String RV_HIDUKE, int RV_IINECHECK, int RV_BOOK) {
-		this.RV_ID = RV_ID;
-		this.USER_ID = USER_ID;
-		this.RV_ONSENNAME = RV_ONSENNAME;
-		this.RV_POINT = RV_POINT;
-		this.RV_DAY = RV_DAY;
-		this.RV_IMG = RV_IMG;
-		this.RV_REMARK  = 	RV_REMARK ;
-		this.RV_HIDUKE = RV_HIDUKE;
-		this.RV_IINECHECK = RV_IINECHECK;
-		this.RV_BOOK =RV_BOOK;
+
+	public Review(int rvId, int userId, String rvOnsenName, int rvPoint, String rvDay, String rvImg, String rvRemark, String rvHiduke, int rvIineCheck, int rvBook) {
+		this.rvId = rvId;
+		this.userId = userId;
+		this.rvOnsenName = rvOnsenName;
+		this.rvPoint = rvPoint;
+		this.rvDay = rvDay;
+		this.rvImg = rvImg;
+		this.rvRemark = rvRemark;
+		this.rvHiduke = rvHiduke;
+		this.rvIineCheck = rvIineCheck;
+		this.rvBook =rvBook;
 	}
+
 	public Review() {
-		this.RV_ID = 0;
-		this.USER_ID = 0;
-		this.RV_ONSENNAME = "";
-		this.RV_POINT = 0;
-		this.RV_DAY = "";
-		this.RV_IMG = "";
-		this.RV_REMARK  = 	"" ;
-		this.RV_HIDUKE = "";
-		this.RV_IINECHECK = 0;
-		this.RV_BOOK =0;
-		this.P_NICKNAME="";
-		this.P_IMG ="";
+		this.rvId = 0;
+		this.userId = 0;
+		this.rvOnsenName = "";
+		this.rvPoint= 0;
+		this.rvDay = "";
+		this.rvImg = "";
+		this.rvRemark ="";
+		this.rvHiduke = "";
+		this.rvIineCheck = 0;
+		this.rvBook =0;
 
 	}
 
-	
-	public Review(int RV_ID, int USER_ID, String RV_ONSENNAME , int RV_POINT, String RV_IMG, String RV_REMARK, String P_NICKNAME,
-			String P_IMG ) {
+
+	public Review(int rvId, int UserId, String rvOnsenName , int rvPoint, String rvImg) {
 		// TODO 自動生成されたコンストラクター・スタブ
-		this.RV_ID = RV_ID;
-		this.USER_ID = USER_ID;
-		this.RV_ONSENNAME = RV_ONSENNAME;
-		this.RV_POINT = RV_POINT;
-		this.RV_IMG = RV_IMG;
-		this.RV_REMARK  = 	RV_REMARK ;
-		this.P_NICKNAME =P_NICKNAME;
-		this.P_IMG = P_IMG;
-	}
-	public String P_IMG() {
-		return this.P_IMG;
+		this.rvId =rvId;
+		this.userId = UserId;
+		this.rvOnsenName = rvOnsenName;
+		this.rvPoint = rvPoint;
+		this.rvImg =  rvImg;
 	}
 
-	public void P_IMG(String P_IMG) {
-		this.P_IMG = P_IMG;
+
+	public int getRvId() {
+		return rvId;
 	}
 
-	public int getRV_ID() {
-		return RV_ID;
+	public void setRvId(int rvId) {
+		this.rvId = rvId;
 	}
 
-	public void setRV_ID(int rV_ID) {
-		RV_ID = rV_ID;
+	public int getUserId() {
+		return userId;
 	}
 
-	public int getUSER_ID() {
-		return USER_ID;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
-	public void setUSER_ID(int uSER_ID) {
-		USER_ID = uSER_ID;
+	public String getRvOnsenName() {
+		return rvOnsenName;
 	}
 
-	public String getRV_ONSENNAME() {
-		return RV_ONSENNAME;
+	public void setRvOnsenName(String rvOnsenName) {
+		this.rvOnsenName = rvOnsenName;
 	}
 
-	public void setRV_ONSENNAME(String rV_ONSENNAME) {
-		RV_ONSENNAME = rV_ONSENNAME;
+	public int getRvPoint() {
+		return rvPoint;
 	}
 
-	public int getRV_POINT() {
-		return RV_POINT;
+	public void setRvPoint(int rvPoint) {
+		this.rvPoint = rvPoint;
 	}
 
-	public void setRV_POINT(int rV_POINT) {
-		RV_POINT = rV_POINT;
+	public String getRvDay() {
+		return rvDay;
 	}
 
-	public String getRV_DAY() {
-		return RV_DAY;
+	public void setRv_day(String rvDay) {
+		this.rvDay = rvDay;
 	}
 
-	public void setRV_DAY(String rV_DAY) {
-		RV_DAY = rV_DAY;
+	public String getRvImg() {
+		return rvImg;
 	}
 
-	public String getRV_IMG() {
-		return RV_IMG;
+	public void setRv_img(String rvImg) {
+		this.rvImg = rvImg;
 	}
 
-	public void setRV_IMG(String rV_IMG) {
-		RV_IMG = rV_IMG;
+
+	public String getRvRemark() {
+		return rvRemark;
 	}
 
-	public String getRV_REMARK() {
-		return RV_REMARK;
+	public void setRvRemark(String rvRemark) {
+		this.rvRemark = rvRemark;
 	}
 
-	public void setRV_REMARK(String rV_REMARK) {
-		RV_REMARK = rV_REMARK;
+
+	public String getRvHiduke() {
+		return rvHiduke;
 	}
 
-	public String getRV_HIDUKE() {
-		return RV_HIDUKE;
+	public void setRvHiduke(String rvHiduke) {
+		this.rvHiduke = rvHiduke;
 	}
 
-	public void setRV_HIDUKE(String rV_HIDUKE) {
-		RV_HIDUKE = rV_HIDUKE;
+	public int getRvIineCheck() {
+		return rvIineCheck;
 	}
 
-	public int getRV_IINECHECK() {
-		return RV_IINECHECK;
+	public void setRvIineChek(int rvIineCheck) {
+		this.rvIineCheck = rvIineCheck;
 	}
 
-	public void setRV_IINECHECK(int rV_IINECHECK) {
-		RV_IINECHECK = rV_IINECHECK;
+	public int getRvBook() {
+		return rvBook;
 	}
 
-	public int getRV_BOOK() {
-		return RV_BOOK;
-	}
-
-	public void setRV_BOOK(int rV_BOOK) {
-		RV_BOOK = rV_BOOK;
+	public void setRvBook(int rvBook) {
+		this.rvBook = rvBook;
 	}
 
 

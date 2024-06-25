@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,14 +29,22 @@
     <div ><img src="image/fuwa.png" class="bird"></div>
 
 <!-- 写真横スライドさせるための始まり -->
+
+    <c:set var="end" value="${answer.size() - 1}" />
+<c:if test="${end >= 0}">
+	<c:forEach begin="0" end="${end}" step="1" var="i">
+		<form id="Box${i}" class="itiran_form" method="POST" action="/E1/ChatResultServlet">
+			<img src="${hs_img }">
+			<input class="detail" type="submit" class="post_button" name="detail" value="詳細">
+		</form>
+	<br>
+</c:forEach>
+</c:if>
+</div>
     <div class="Container">
         <div class="Box-Container">
-            <div class="Box1"></div>
-            <div class="Box2"></div>
-            <div class="Box3"></div>
-            <div class="Box4"></div>
-            <div class="Box5"></div>
-            <div class="Box6"></div>
+
+
             <!-- 必要な数の.Box要素を追加 -->
         </div>
         <div class="Arrow left">

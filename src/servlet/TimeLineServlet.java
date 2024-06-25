@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.ReviewDao;
-import model.Review2;
+import model.Review;
 
 /**
  * Servlet implementation class TimeLineServlet
@@ -41,20 +42,20 @@ public class TimeLineServlet extends HttpServlet {
 //            return;
 //        }
 
-        String[] image_path2 = new String[100];
-        String[] image_url2 = new String[100];
-
-        // セッションからIDを取得する場合
-//        int id = (int) session.getAttribute("id");
-
-        // ReviewDaoを使用してレビューリストを取得
         ReviewDao tDao = new ReviewDao();
-        List<Review2> TList = tDao.select();
+        List<Review> TList = tDao.select();
 
         // レビューリストの最初の要素から名前を取得（例として）
-        String name = TList.isEmpty() ? "" : TList.get(0).getPnickname();
+//        String name = TList.isEmpty() ? "" : TList.get(0).getPnickname();
 //        request.setAttribute("name", name);
         request.setAttribute("TList", TList);
+        //request.setAttribute("data",TList);
+
+
+		//ここでユーザーデータを二次元配列ユーザーのid[[ユーザーネーム][ユーザーアイコン画像]]
+        Map<Integer, String> tlud= tDao.selectud();
+		request.setAttribute("tlud", tlud);
+
 
         // JSPにフォワード
         RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/TimeLine.jsp");
