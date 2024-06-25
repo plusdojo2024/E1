@@ -34,7 +34,7 @@
         <table class="shosai">
         <tr>
             <th>温泉名</th>
-            <td>だいかんそう　せなみの湯</td>
+            <td>${onsen }</td>
         </tr>
 
         <tr>

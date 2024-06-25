@@ -21,17 +21,17 @@ public class OnsensearchDao {
 					Class.forName("org.h2.Driver");
 
 					// データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E1", "sa", "");
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/YuTripDB/YuTrip dadada", "sa", "");
 
 					// SQL文を準備する
 					String sql = "SELECT * FROM ONSEN WHERE hs_address LIKE ? And HS_Effect Like ? AND hs_roten LIKE ? AND hs_keikan LIKE ? AND hs_kyakuburo LIKE ? ORDER BY hs_id ";
 					PreparedStatement pStmt = conn.prepareStatement(sql);
 					// SQL文を完成させる
-					pStmt.setString(1,HS_ADDRESS );
-					pStmt.setString(2,HS_EFFECT );
-					pStmt.setString(3,HS_ROTEN );
-					pStmt.setString(4,HS_KEIKAN );
-					pStmt.setString(5,HS_KYAKUSITUBURO );
+					pStmt.setString(1,"%"+HS_ADDRESS+"%" );
+					pStmt.setString(2,"%"+HS_EFFECT+"%" );
+					pStmt.setString(3,"%"+HS_ROTEN +"%");
+					pStmt.setString(4,"%"+HS_KEIKAN +"%");
+					pStmt.setString(5,"%"+HS_KYAKUSITUBURO+"%" );
 
 					// SQL文を実行し、結果表を取得する
 					ResultSet rs = pStmt.executeQuery();

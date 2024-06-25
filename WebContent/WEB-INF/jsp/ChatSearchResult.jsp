@@ -30,11 +30,11 @@
 
 <!-- 写真横スライドさせるための始まり -->
 
-    <c:set var="end" value="${answer.size() - 1}" />
+    <c:set var="end" value="${cardlist.size() - 1}" />
 <c:if test="${end >= 0}">
 	<c:forEach begin="0" end="${end}" step="1" var="i">
 		<form id="Box${i}" class="itiran_form" method="POST" action="/E1/ChatResultServlet">
-			<img src="${hs_img }">
+			<img src="${cardlist[i].hs_img }">
 			<input class="detail" type="submit" class="post_button" name="detail" value="詳細">
 		</form>
 	<br>

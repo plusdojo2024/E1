@@ -32,10 +32,20 @@ public class ChatSaveServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ログインページにフォワードする
+		String hs_address = "新潟";
+		String hs_effect = "リウマチ";
+		String hs_roten = "o";
+		String hs_keikan = "x";
+		String hs_kyakuburo = "x";
 
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ChatSearchResult.jsp");
-				dispatcher.forward(request, response);
+		//呼びたいときのダオの書き方
+         OnsensearchDao osDao  =new OnsensearchDao();
+         List<OnsenData> cardlist = osDao.select(hs_address,hs_effect,hs_roten,hs_keikan,hs_kyakuburo);
+
+         request.setAttribute("cardlist", cardlist);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ChatSearchResult.jsp");
+		dispatcher.forward(request, response);
 
 	}
 
