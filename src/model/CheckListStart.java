@@ -1,7 +1,7 @@
 package model;
 import java.io.Serializable;
 
-public class CheckList implements Serializable {
+public class CheckListStart implements Serializable {
 	private int cl_Id;
 	private int User_Id;	// ユーザーID
 	private String cl_Name;	// チェックリスト名
@@ -9,7 +9,7 @@ public class CheckList implements Serializable {
 	private String Hiduke; //作成日
 
 	//引数があるコンストラクタ
-	public CheckList(int cl_Id, int User_Id, String cl_Name, String cl_Element, String Hiduke){
+	public CheckListStart(int cl_Id, int User_Id, String cl_Name, String cl_Element, String Hiduke){
 		super();
 		this.cl_Id = cl_Id;
 		this.User_Id = User_Id;
@@ -19,7 +19,7 @@ public class CheckList implements Serializable {
 	}
 
 	//引数がないコンストラクタ
-	public CheckList() {
+	public CheckListStart() {
 			super();
 			this.cl_Id = 0;
 			this.User_Id = 0;
@@ -28,8 +28,7 @@ public class CheckList implements Serializable {
 			this.Hiduke = "";
 	}
 
-	public CheckList(String cl_Element, String cl_Name) {
-		this.cl_Element = cl_Element;
+	public CheckListStart(String cl_Name) {
 		this.cl_Name = cl_Name;
 	}
 

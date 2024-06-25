@@ -13,35 +13,27 @@
 
 </head>
 <body>
+<div class="onaka">
+<br><br><br>
+<p class="midasi">・作成したチェックリスト</p>
+<a href="/E1/CheckListRegistServlet">
+	<img src="/image/plus.png">
+</a>
 
-<!--
-<a href="/E1/CheckListViewServlet"><img id="kago" src="image/kago.png" alt="gazou" width="300"></a>
-<br>
-<img src="image/boarder.png" alt="boarder" class="boarder">
--->
-<br><br><br><br><br><br><br><br><br><br><br><br>
-<c:forEach begin="0" end="${CheckList.size()}" step="2" var="i">
-	<input type="text" name="cl_Name" value="${e.cl_Name }"><br>
+<c:set var="end" value="${CheckList.size() - 1}" />
+<c:if test="${end >= 0}">
+	<c:forEach begin="0" end="${end}" step="1" var="i">
+		<form id="item${i}" class="itiran_form" method="POST" action="/E1/CheckListViewServlet">
+			<input class="itiran_text" type="text" name="cl_Name" value="${CheckList[i].cl_Name }" readonly>
+			<input class="detail" type="submit" class="post_button" name="detail" value="詳細">
+		</form>
+	<br>
 </c:forEach>
-
-<form class="search_form" method="POST" action="/E1/CheckListViewServlet">
- 	<input class="submit" type="submit" value="GO">
-</form>
+</c:if>
+</div>
 
 
 
-<script>
-    function onoff() {
-        var kago = document.getElementById('kago');
-        if(kago.src.includes('kago_off.png')) {
-            kago.src = 'kago.png';
-        }
-
-        else {
-            kago.src = 'kago_off.png';
-        }
-    }
-</script>
 <!--テンプレート＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝-->
     <header id="header">
 

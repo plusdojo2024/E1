@@ -24,11 +24,11 @@ public class CheckListDAO {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/YuTrip DB/YuTrip dadada", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT cl_element FROM CHECKLIST WHERE cl_name=? ORDER BY cl_Id";
+			String sql = "SELECT cl_element cl_name FROM CHECKLIST WHERE cl_name=? ORDER BY cl_Id";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			// SQL文を完成させる
 
-			pStmt.setString(1, "%" + cl_Name + "%");
+			pStmt.setString(1,cl_Name );
 
 
 			// SQL文を実行し、結果表を取得する
@@ -37,11 +37,8 @@ public class CheckListDAO {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 				CheckList record = new CheckList(
-				rs.getInt("cl_Id"),
-				rs.getInt("User_Id"),
-				rs.getString("cl_Name"),
-				rs.getString("cl_Element"),
-				rs.getString("Hiduke")
+					rs.getString("cl_Element"),
+					rs.getString("cl_Name")
 				);
 				CheckList.add(record);
 			}

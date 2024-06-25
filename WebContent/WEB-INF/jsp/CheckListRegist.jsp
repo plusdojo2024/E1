@@ -1,35 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>aaaa</title>
-<link rel="stylesheet" href="css/CheckListEdit.css">
+<link rel="stylesheet" href="css/CheckListView.css">
 </head>
-
 <body>
-<br><br><br><br><br><br><br><br><br><br>
-<div id="Edit">
-    <a href="/E1/CheckListServlet" id="back">
-        <img src="image/back.png">
-    </a>
-</div>
+    <br><br><br><br><br>
+    <div id="Edit">
 
-<br>
-<div class="midasi">
-・編集画面
-</div>
+        <a href="/E1/CheckListServlet" id="back">
+        	<img src="image/back.png">
+        </a>
+    </div>
 
-<div class="koumoku_iti">
-<form id="item${i}" class="save_post" method="POST" action="/E1/CheckListServlet">>
-<c:forEach begin="1" end="10" step="1" var="i">
-	項目${i}:
-    <input id="item${i}" class="textbox" type="text" value="">
-    <br>
-</c:forEach>
+新規チェックリスト名：
+<form id="textbox-form" action="CheckRegistServlet" method="post">
+	<input type="text" name="sinki" class="sinki" value="">
+	<input type="submit" name="sinki" class="sinki_post" value="">
 </form>
-</div>
+
+
+
 
 
 
@@ -80,9 +74,3 @@
     </footer>
     <!--footerここまで＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝-->
 
-
-
-
-
-</body>
-</html>

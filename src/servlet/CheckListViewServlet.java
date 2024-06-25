@@ -35,14 +35,7 @@ public class CheckListViewServlet extends HttpServlet {
 		}
 */
 
-		request.setCharacterEncoding("UTF-8");
 
-		// ここから改造
-		String cl_Name = "家電"; //request.getParameter("cl_Name");
-
-		CheckListDAO clDao = new CheckListDAO();
-		List<CheckList> CheckList = clDao.select(cl_Name);
-		request.setAttribute("CheckList", CheckList);
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckListView.jsp");
@@ -50,11 +43,22 @@ public class CheckListViewServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
 		String cl_Name = "家電"; //request.getParameter("cl_Name");
 
 		CheckListDAO clDao = new CheckListDAO();
 		List<CheckList> CheckList = clDao.select(cl_Name);
 		request.setAttribute("CheckList", CheckList);
+*/
+		request.setCharacterEncoding("UTF-8");
+
+		// ここから改造
+		String cl_Name =request.getParameter("cl_Name"); //"家電";
+
+		CheckListDAO clDao = new CheckListDAO();
+		List<CheckList> CheckList = clDao.select(cl_Name);
+		request.setAttribute("CheckList", CheckList);
+		request.setAttribute("cl_Name", cl_Name);
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/CheckListView.jsp");
