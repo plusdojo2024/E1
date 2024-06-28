@@ -33,6 +33,11 @@ public class CheckList implements Serializable {
 		this.cl_Name = cl_Name;
 	}
 
+	public CheckList(int User_Id, String cl_Name) {
+		this.User_Id = User_Id;
+		this.cl_Name = cl_Name;
+	}
+
 
 
 		//ゲッタとセッタ--------------------------------------------------------------------------------------

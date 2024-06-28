@@ -21,7 +21,7 @@ public class CheckListViewDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/YuTrip DB/YuTrip dadada", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
 
 			// SQL文を準備する   ↓DISTINCT
 			String sql = "SELECT DISTINCT cl_name FROM checklist WHERE User_Id LIKE ?";

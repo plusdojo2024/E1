@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>コメント</title>
-    <link rel="stylesheet" href="css/CommentCreate.css">
+    <link rel="stylesheet" href="/E1/css/CommentCreate.css">
 </head>
 <body id="top">
     <!--ヘッダー-->
@@ -16,7 +16,7 @@
     </a>
     <!--ユーザーアイコン-->
     <a href="">
-        <img src="image/OIP (3).jpg" alt="アイコン" class="user-icon">
+        <img src="/E1/image/${sessionScope.ic}" alt="アイコン" class="user-icon">
     </a>
     <hr class="header_hr">
     </header>
@@ -68,30 +68,23 @@
         margin-bottom:10vh;
         を入れてみてください-->
     <!--フッター-->
-    <footer id="footer">
-        <div id="footer-wrapper">
-            <hr>
-            <!--画面下アイコン-->
-            <div id="footer-tag">
-                <a href="">
-                    <img src="image/home.png" alt="ホーム" class="footer-icon">
-                    <p>ホーム</p>
-                </a>
-                <a href="">
-                    <img src="image/chat.png" alt="チャット" class="footer-icon">
-                    <p class="nimoji">検索</p>
-                </a>
-                <a href="">
-                    <img src="image/timeline.png" alt="タイムライン" class="footer-icon">
-                    <p class="nimoji">投稿</p>
-                </a>
-                <a href="">
-                    <img src="image/checklist.png" alt="チェックリスト" class="footer-icon">
-                    <p>持ち物</p>
-                </a>
-    </footer>
-    <!--footerここまで-->
-    <!--フッターここまで-->
+<footer id="footer">
+<div id="footer-wrapper">
+	<hr>
+		<!--画面下アイコン-->
+		<div id="footer-tag">
+			<a href="/E1/HomeServlet"> <img src="/E1/image/home.png" alt="ホーム"
+				class="footer-icon">
+					<p>ホーム</p></a> <a href="/E1/ChatSearchServlet"> <img src="/E1/image/chat.png" alt="チャット"
+				class="footer-icon">
+					<p class="nimoji">検索</p></a> <a href="/E1/TimeLineServlet"> <img
+				src="/E1/image/timeline.png" alt="タイムライン" class="footer-icon">
+					<p id="timel" class="nimoji">TL</p></a> <a href="/E1/CheckListServlet"> <img
+				src="/E1/image/checklist.png" alt="チェックリスト" class="footer-icon">
+					<p>持ち物</p></a>
+		</div>
+</div>
+</footer>
 </body>
 <script>
     function preview(obj, previewId) {

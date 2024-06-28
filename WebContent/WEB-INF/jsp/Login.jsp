@@ -12,7 +12,7 @@
 <body>
 <div class="br1">
 <div class ="log">
-<img src="image/login_logo.png" width="516" height="450" >
+<img src="/E1/image/title_log.png" width="516" height="450" >
 </div>
 </div>
 
@@ -22,7 +22,7 @@
       <tr>
         <td>
           <label>メールアドレス<br>
-          <input type="email" name="log"  >
+          <input type="email" name="log" class="fom"  >
 
         </label>
         </td>
@@ -30,14 +30,14 @@
       <tr>
         <td>
           <label>パスワード<br>
-          <input type="password" name="pw"  >
+          <input type="password" name="pw"  class="fom" >
 
           </label>
         </td>
       <tr>
       <tr>
         <td colspan="2">
-            <input type="submit" name="submit"  style="background-color:#FFFFFF; border-radius:10px;border: 1px solid #bcbbbb;">
+            <input type="submit" name="submit" class="fom" style="background-color:#FFFFFF; border-radius:10px;border: 1px solid #bcbbbb;">
 
          <!--エラーメッセージ表示 わからん-->
           <span id="error_message"></span>
@@ -71,7 +71,7 @@
 
 
  <div class = "shinki">
-<li><a href="User_touroku.html">新規アカウント登録はこちら</a></li>
+<li><a href="UserRegist.html">新規アカウント登録はこちら</a></li>
  </div>
 </html>
 

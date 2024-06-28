@@ -35,9 +35,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// ログインページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Login.jsp"); //移動する先
-				dispatcher.forward(request, response); //起動する場所
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+				dispatcher.forward(request, response); //起動する場
 	}
 
 	/**
@@ -62,7 +60,7 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("ic",ic);
 
 					// メニューサーブレットにリダイレクトする
-					response.sendRedirect("/E1/LoginServlet");
+					response.sendRedirect("/E1/HomeServlet");
 				}
 				else {									// ログイン失敗
 					// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
@@ -75,7 +73,6 @@ public class LoginServlet extends HttpServlet {
 				}
 
 		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

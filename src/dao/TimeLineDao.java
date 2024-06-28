@@ -36,10 +36,7 @@ public class TimeLineDao {
 						
 						rs.getInt("RV_ID"),
 						rs.getInt("USER_ID"),
-						rs.getString("COMMENT"),
-						rs.getString("P_NICKNAME"),
-						rs.getString("P_IMG")
-
+						rs.getString("COMMENT")
 				);
 				Timeline.add(record);
 			}

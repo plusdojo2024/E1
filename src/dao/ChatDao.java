@@ -21,7 +21,7 @@ public class ChatDao {
 				Class.forName("org.h2.Driver");
 
 				// データベースに接続する
-				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E1", "sa", "");
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
 
 				// SQL文を準備する
 				String sql = "SELECT * FROM CHAT_BOT ";

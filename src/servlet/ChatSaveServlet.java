@@ -32,10 +32,12 @@ public class ChatSaveServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// ログインページにフォワードする
+		String chat_result = request.getParameter("result_chat"); 
+		
+	         request.setAttribute("cardlist", chat_result);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ChatSearchResult.jsp");
+		dispatcher.forward(request, response);
 
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ChatSearchResult.jsp");
-				dispatcher.forward(request, response);
 
 	}
 
@@ -47,7 +49,7 @@ public class ChatSaveServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+	
 
 	// リクエストパラメータを取得する
 			request.setCharacterEncoding("UTF-8");
@@ -59,6 +61,9 @@ public class ChatSaveServlet extends HttpServlet {
 			      String HS_Roten = request.getParameter("HS_Roten");
 			      String HS_Keikan = request.getParameter("HS_Keikan");
 			      String HS_Kyakusituburo = request.getParameter("HS_Kyakusituburo");
+			   
+				
+			
 				OnsensearchDao OSD = new OnsensearchDao();
 				List<OnsenData> searchList = OSD.select(HS_Address, HS_Effect, HS_Roten, HS_Keikan, HS_Kyakusituburo);
 
@@ -69,7 +74,8 @@ public class ChatSaveServlet extends HttpServlet {
 
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/SearchResult.jsp");
 			dispatcher.forward(request, response);
-			}
+
+	}
 
 }
 

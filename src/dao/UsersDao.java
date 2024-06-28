@@ -95,7 +95,7 @@ public List<Users> select(Users card) {
 		Class.forName("org.h2.Driver");
 
 		// データベースに接続する
-		conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/YuTrip.db", "sa", "");
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
 
 		// SQL文を準備する
 		String sql = "SELECT * FROM Users WHERE USER_ID =?  ORDER BY number";
@@ -167,7 +167,7 @@ public boolean update(Users card) {
 		Class.forName("org.h2.Driver");
 
 		// データベースに接続する
-		conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/YuTrip.db", "sa", "");
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
 
 		// SQL文を準備する
 		String sql = "UPDATE Users SET  USER_PW=?, MAILADDRESS=?,P_NICKNAME=?,P_IMG=?,P_AGE=?,P_GENDER=? WHERE  USER_ID =?";
@@ -257,7 +257,7 @@ public boolean insert(Users card) {
 		Class.forName("org.h2.Driver");
 
 		// データベースに接続する
-		conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/YuTrip.db", "sa", "");
+		conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
 
 		// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 		String sql = "INSERT INTO Users VALUES (NULL, ?, ?,?,?,?,?,?)";

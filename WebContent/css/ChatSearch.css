@@ -1,1 +1,186 @@
 @charset "UTF-8";
+main{
+    margin-bottom:10vh;
+}
+
+.search-background {
+    width: auto;
+    height: 84vh;
+    position: relative;
+    overflow: hidden;
+    background-size: 100% 100%;
+}
+
+.akine-ta- {
+    height: auto;
+    width: 99.5%;
+    position: absolute;
+    background-repeat: no-repeat;
+    border: double;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f0f0f0;
+}
+
+/* アキネーターの吹き出し */
+.speech-bubble {
+    position: relative;
+    background-color: #f0f0f0;
+    border-radius: 100px;
+    padding: 10px;
+    max-width: 80%;
+    text-align: center;
+    font-size: 50px;
+    top: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
+    border:solid;
+}
+
+.bot-message{
+	position:relative;
+	left: 50%;
+    transform: translateX(-50%);
+	width:120%;
+    font-size: 40px;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    /* 吹き出しの底辺の位置 */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 40px 40px 40px 0;
+    border-style: solid;
+    border-color: #f0f0f0 transparent transparent transparent;
+}
+
+.chat-log {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .chat-message { /* 新しいスタイル */
+      display: flex;
+      margin-bottom: 10px;
+    }
+    .user-message,
+    .bot-message { /* 新しいスタイル */
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 70%;
+    }
+    .user-message { /* 新しいスタイル */
+      background-color: #e9ffe9;
+      margin-left: auto;
+    }
+    .bot-message { /* 新しいスタイル */
+      background-color: #f2f2f2;
+      margin-right: auto;
+    }
+
+/* 回答フォーム */
+.search-form {
+    position: relative;
+    background-color: #F5F5F5;
+    height: 36vh;
+}
+
+.search-form input {
+    text-align:center;
+    font-size:40px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 15vh;
+    width: 60%;
+    border: solid;
+    background-color: white;
+    z-index:2;
+}
+
+.search-form-button {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 9vh;
+    width: 15%;
+    border: solid;
+    border-radius: 10px;
+    font-size: 30px;
+    background-color: white;
+    z-index:2;
+}
+
+.search-form-button-after{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    width:60%;
+    height:50%;
+    font-size:45px;
+    background-color: white;
+    border: solid;
+    z-index:1;
+}
+
+/* チャット */
+.chat-wrapper {
+    background-color: #F9F7ED;
+    position: relative;
+    height: 120vh;
+    overflow: auto;
+}
+
+.chat-wrapper p {
+    font-size: 45px;
+    text-align: center;
+    color: gray;
+}
+
+/* 質問履歴 */
+.chat-container{
+    position:relative;
+}
+
+.speech-bubble-question {
+    position: relative;
+    display:inline-block;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 75%;
+    font-size: 40px;
+    left: 10%;
+    border:solid;
+    border-width: 0.2px;
+    box-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
+    margin:10px;
+}
+
+.speech-bubble-answer {
+    position:relative;
+    display:inline-block;
+    background-color:rgb(156,255,44);
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 75%;
+    text-align: center;
+    font-size: 40px;
+    left:90%;
+    transform: translateX(-100%);
+    border:solid;
+    border-width: 0.2px;
+    box-shadow: none;
+    margin:10px;
+	 box-shadow: 10px 10px 0 rgba(0, 0, 0, 1);
+}
+
+
+

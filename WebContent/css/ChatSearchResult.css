@@ -16,6 +16,11 @@ main{
     position:relative;
     height: 80vh;
 }
+
+.kesu {
+	display: none;
+}
+
 .bird{
     width:100%;
     position:relative;
@@ -38,6 +43,12 @@ main{
     transition: transform 0.3s ease;
     transform: translateX(0);
 }
+.onsen-img0{
+	position:absolute;
+	left:10%;
+	top:10%;
+}
+
 .Box1 {
     flex-shrink: 0;
     width: 40vh;

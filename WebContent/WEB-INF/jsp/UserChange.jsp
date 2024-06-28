@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>ユーザー情報変更 | ゆとりっぷ</title>
 </head>
-<link rel="stylesheet" type="text/css" href="css/Login.css">
+<link rel="stylesheet" type="text/css" href="/E1/css/Login.css">
 <body>
 
 
@@ -38,10 +38,10 @@
              <input type="text" name="mailaddress" class="txt"><br>
 
           <label>氏名(必須)<br>
-          <input type="text" name="password" class="txt"><br>
+          <input type="text" name="nickname" class="txt"><br>
 
           <label>パスワード(必須)<br>
-            <input type="text" name="gender" class="txt"><br>
+            <input type="text" name="password" class="txt"><br>
 
           <label>年齢(必須)<br>
           <input type="text" name="age" class="txt"><br>

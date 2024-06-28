@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ホーム | ゆとりっぷ</title>
- <link rel="stylesheet" type="text/css" href="css/Home.css">
+ <link rel="stylesheet" type="text/css" href="/E1/css/Home.css">
 </head>
 
 <body>
@@ -15,13 +15,13 @@
 
         <!--ロゴ-->
         <a href="">
-            <img src="img/logo_yutoripu2.png" alt="ロゴ" class="logo">
+            <img src="/E1/image/logo_yutoripu2.png" alt="ロゴ" class="logo">
         </a>
         <!--ロゴここまで-->
-
+ 		<a href="/E1/LoginServlet">ログイン</a>
         <!--ユーザーアイコン-->
         <a href="">
-            <img src="img/OIP (3).jpg" alt="アイコン" class="user-icon">
+            <img src="/E1/image/${sessionScope.ic}" alt="アイコン" class="user-icon">
         </a>
         <!--ユーザーアイコンここまで-->
         <hr class="header_hr">
@@ -30,18 +30,12 @@
 
     <!--おすすめ温泉表示-->
 <div class="home1">
-    <p>本日のおすすめ温泉</p>
+
+    <p class="bordering01">本日のおすすめ温泉</p>
     <div class = "osusume">
+	<p class = "onmei">${os[1]}</p><br>
+    <img src="/E1/image/${os[2]}" id='imageArea' width="480" height="429">
 
-    <img src="" id='imageArea' width="480" height="429">
-    <script>
-        const imageArea = document.getElementById('imageArea');
-        const images = ['img/OIP (1).jpg', 'img/tori.png', 'img/logo_yutoripu2.png' ];
-
-        const imageNo = Math.floor( Math.random() * images.length);
-        imageArea.src = images[imageNo];
-
-    </script>
 
 </div>
 </div>
@@ -50,59 +44,57 @@
 <div class = "ranking">
     <div class="Container">
         <div class="Box-Container">
+        <div class="Box" width="700px" height="">
+            <img src="image/rank1.png" width="120" height="150" class="rankimg">
+              <p>${osrn[0][1] }</p>
+            <img src="/E1/image/${osrn[0][2]}" width="500px" height="400px" class="oimo">
+            </div>
+
           <div class="Box">
-            <img src ="img\torionsen.jpg">
+           <img src="image/rank2.png" width="120" height="150" class="rankimg">
+             <p> ${osrn[1][1]}</p>
+            <img src="/E1/image/${osrn[1][2]}" width="500px" height="400px" class="oimo">
             </div>
           <div class="Box">
-            <img src ="img\torionsen.jpg">
+           <img src="image/rank3.png" width="120" height="150" class="rankimg">
+             <p>${osrn[2][1]}</p>
+            <img src="/E1/image/${osrn[2][2]}" width="500px" height="400px" class="oimo">
+            </div>
+
+         <!--  <div class="Box">
+            <p>${osrn[3][1]}</p>
+            <img src="/E1/${osrn[3][2]}" width="500px" height="400px" class="oimo">
             </div>
           <div class="Box">
-            <img src ="img\torionsen.jpg">
-            </div>
-          <div class="Box">
-            <img src ="img\torionsen.jpg">
-            </div>
-          <div class="Box">
-            <img src ="img\torionsen.jpg">
-            </div>
-          <div class="Box">
-            <img src ="img\torionsen.jpg">
-            </div>
-          <div class="Box">
-            <img src ="img\torionsen.jpg">
-            </div>
+
+            <img src="/E1/${osrn[4][2]}"width="500px" height="400px" class="oimo">
+            </div> -->
+
           <!-- 必要な数の.Box要素を追加 -->
         </div>
         <div class= "Arrow left"> < </div>
         <div class= "Arrow right">></div>
       </div>
-    <script src ="main.js"></script>
+    <script src ="/E1/js/main.js"></script>
 
 </div>
-    <!--footer-->
-    <footer id="footer">
-        <hr>
-        <div id="footer-tag">
-            <a href="">
-                <img src="img/home.png" alt="ホーム" class="footer-icon">
-                <p>ホーム</p>
-            </a>
-            <a href="">
-                <img src="img/chat.png" alt="チャット" class="footer-icon">
-                <p>チャット</p>
-            </a>
-            <a href="">
-                <img src="img/timeline.png" alt="タイムライン" class="footer-icon">
-                <p>TL</p>
-            </a>
-            <a href="">
-                <img src="img/checklist.png" alt="チェックリスト" class="footer-icon">
-                <p>持ち物</p>
-            </a>
-
-            </div>
-    </footer>
-    <!--footerここまで-->
+ <footer id="footer">
+<div id="footer-wrapper">
+	<hr>
+		<!--画面下アイコン-->
+		<div id="footer-tag">
+			<a href="/E1/HomeServlet"> <img src="/E1/image/home.png" alt="ホーム"
+				class="footer-icon">
+					<p>ホーム</p></a> <a href="/E1/ChatSearchServlet"> <img src="/E1/image/chat.png" alt="チャット"
+				class="footer-icon">
+					<p class="nimoji">検索</p></a> <a href="/E1/TimeLineServlet"> <img
+				src="/E1/image/timeline.png" alt="タイムライン" class="footer-icon">
+					<p id="timel" class="nimoji">TL</p></a> <a href="/E1/CheckListServlet"> <img
+				src="/E1/image/checklist.png" alt="チェックリスト" class="footer-icon">
+					<p>持ち物</p></a>
+		</div>
+</div>
+</footer>
 
 </body>
 

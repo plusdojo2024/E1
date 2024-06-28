@@ -1,5 +1,18 @@
 @charset "UTF-8";
 
+body{
+
+  flex-wrap: wrap
+
+}
+
+.bordering01 {
+  text-stroke: 1px #000;
+  -webkit-text-stroke: 1px #000;
+
+  color: #fff;
+}
+
 /*おすすめ温泉表示*/
 .home1 {
     /*border: 300px solid #FCF9EF;
@@ -17,15 +30,37 @@
     text-align: center;
     font-size: 80px;
     display:inline-block;
+
     /*padding-top: 20px;*/
 
   }
 
+  .onmei{
+  font-size:60px;
+
+  }
+
+.oimo{
+	 margin-left:170px;
+
+}
+
+.ranking p{
+	font-size:50px;
+	 position: absolute;
+margin-left: 20px;
+}
+
+.home1 p{
+	margin-bottom:0px;
+	margin-top:50px
+
+}
   .osusume{
     margin-bottom:70px;
     /*padding-left: 240px;*/
     /*padding-top: 130px;*/
-  padding-bottom: 100px;
+  padding-bottom: 50px;
   }
 
   /*ランキング表示のdiv*/
@@ -57,7 +92,7 @@
       margin-right: 500px;
       border-radius: 10px;
       /*background-color: #FFFFFF;*/
-      margin-top :150px;
+      margin-top :50px;
       padding-bottom: 150px;
       padding-right: 40px;
     }
@@ -90,98 +125,91 @@
     }
 
 
-    /*ヘッダー*/
-    #header{
-        position:static;
-        height:10vh;
-        width:100%;
+
+    /*ランキング順位の画像*/
+    .rankimg{
+padding-left:30px;
     }
 
-    .logo{
-        position:absolute;
-        top:3%;
-        left:5%;
-        height:6vh;
-    }
-
-    .user-icon {
-        position:absolute;
-        right:6%;
-        top:1.5vh;
-        height:8vh;
-        line-height: 200px;
-        background-color: rgba(0,0,0,0.2);
-        border-radius: 50%;
-        color: #fff;
-      }
-
-    .header_hr{
-        position:absolute;
-        top:10%;
-        width:100%;
-    }
-
-
-    /*フッター　アイコン組
-    #footer{
-        position:fixed;
-        bottom:0;
-        height:10%;
-        width:100%;
-      }
-
-    #footer-tag {
-      width:107%;
-      display: flex;
-      justify-content:space-evenly;
-    }
-
-    #footer-tag, p {
-
-    }
-
-    .footer-icon{
-      width:8vh;
-    }*/
-
-    #footer{
-      background-color: white;
-      position:fixed;
-      bottom:0;
-      height:10vh; /* t b ^ [ ̍   */
-      width:100%;
-
-    }
-  #footer-tag {
-    width:100%;
-    display: flex;
-    justify-content:space-evenly;
-    align-items: center;
-    margin-left: 20px;
-  }
-  #footer-tag a{
-    padding-left: 20px;
-    padding-right: 20px;
-    position:relative;
-    display:inline-block;
-  }
-  #footer-tag p {
-    width:7vh;
-    text-align:center;
-    position:absolute;
-    font-size:25px;
-    color:black;
+   /*ヘッダー*/
+#header{
     background-color: white;
-    border:solid;
-    border-color: black;
-    border-radius: 12px;
-    top:92%;
-    left:50%;
-    transform: translate(-50%, -50%);
-  }
-  .footer-icon{
-    position:relative;
-    width:7vh;
+    position:static;
+    height:25vh; /*ヘッダーの高さ*/
+    width:100%;
+}
+
+.logo{
+    position:absolute;
+    top:3%;
+    left:5%;
+    height:18vh;
+}
+
+.user-icon {
+    position:absolute;
+    right:6%;
+    top:1.5vh;
+    height:20vh;
+    line-height: 200px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 50%;
+    border:double;
+    border-color: grey;
   }
 
+.header_hr{
+    position:absolute;
+    top:10%;
+    width:100%;
+}
+
+
+/*フッター*/
+#footer{
+    background-color: white;
+    position:fixed;
+    bottom:0;
+    height:30vh; /*フッターの高さ*/
+    width:100%;
+  }
+
+#footer-tag {
+  width:100%;
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+}
+
+#footer-tag a{
+  padding-left: 20px;
+  padding-right: 20px;
+  position:relative;
+  display:inline-block;
+}
+
+#footer-tag p {
+  width:21vh;
+  text-align:center;
+  position:absolute;
+  font-size:40px;
+  color:black;
+  background-color: white;
+  border:solid;
+  border-color: black;
+  border-radius: 12px;
+  top:80%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+.footer-icon{
+  position:relative;
+  width:18vh;
+}
+
+
+.Container{
+	margin-bottom: 10em;
+}
 

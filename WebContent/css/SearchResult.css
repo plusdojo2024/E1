@@ -16,7 +16,9 @@ main{
     height:80vh;
 }
 
-
+.kesu {
+	display: none;
+}
 .shosai th{
   white-space: nowrap;
 }

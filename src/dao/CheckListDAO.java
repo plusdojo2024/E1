@@ -21,7 +21,7 @@ public class CheckListDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/YuTrip DB/YuTrip dadada", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
 
 			// SQL文を準備する
 			String sql = "SELECT cl_element cl_name FROM CHECKLIST WHERE cl_name=? ORDER BY cl_Id";
@@ -69,7 +69,7 @@ public class CheckListDAO {
 	}
 
 	// 引数cardで指定されたレコードを登録し、成功したらtrueを返す
-	public boolean insert(CheckList param) {///========================================================================================
+	public boolean insert(CheckList CheckList) {
 		Connection conn = null;
 		boolean result = false;
 
@@ -78,29 +78,34 @@ public class CheckListDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/YuTrip DB/YuTrip dadada", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
+
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO CheckList VALUES (NULL, NULL, ?, ?, ?)";
+			String sql = "INSERT INTO CheckList VALUES (NULL, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
-			if (param.getCl_Name() != null && !param.getCl_Name().equals("")) {
-				pStmt.setString(1, param.getCl_Name());
+			if (CheckList.getUser_Id() != 0 ) {
+				pStmt.setInt(1, CheckList.getUser_Id());
 			}
-			else {
-				pStmt.setString(1, "（未設定）");
-			}
-			if (param.getCl_Element() != null && !param.getCl_Element().equals("")) {
-				pStmt.setString(2, param.getCl_Element());
+
+			if (CheckList.getCl_Name() != null && !CheckList.getCl_Name().equals("")) {
+				pStmt.setString(2, CheckList.getCl_Name());
 			}
 			else {
 				pStmt.setString(2, "（未設定）");
 			}
-			if (param.getHiduke() != null && !param.getHiduke().equals("")) {
-				pStmt.setString(3, param.getHiduke());
+			if (CheckList.getCl_Element() != null && !CheckList.getCl_Element().equals("")) {
+				pStmt.setString(3, CheckList.getCl_Element());
 			}
 			else {
 				pStmt.setString(3, "（未設定）");
+			}
+			if (CheckList.getHiduke() != null && !CheckList.getHiduke().equals("")) {
+				pStmt.setString(4, CheckList.getHiduke());
+			}
+			else {
+				pStmt.setString(4, "（未設定）");
 			}
 
 			// SQL文を実行する
@@ -130,6 +135,7 @@ public class CheckListDAO {
 		return result;
 	}
 
+
 	// 引数cardで指定されたレコードを更新し、成功したらtrueを返す
 	public boolean update(CheckList param) {//=====================================================================
 		Connection conn = null;
@@ -140,9 +146,9 @@ public class CheckListDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/YuTrip DB/YuTrip dadada", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
 			// SQL文を準備する
-			String sql = "UPDATE CHECKLIST  SET CL_NAME = ?, CL_ELEMENT = ?, HIDUKE = ? WHERE CL_ID = ?";
+			String sql = "UPDATE CHECKLIST  SET CL_NAME = ?, CL_ELEMENT = ? WHERE CL_ID = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -206,7 +212,7 @@ public class CheckListDAO {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/YuTrip DB/YuTrip dadada", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
 
 			// SQL文を準備する
 			String sql = "DELETE FROM checklist "

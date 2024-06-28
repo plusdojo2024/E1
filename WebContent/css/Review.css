@@ -1,35 +1,35 @@
 @charset "UTF-8";
 /*ヘッダー*/
 #header{
-  background-color: white;
-  position:static;
-  height:10vh; /*ヘッダーの高さ*/
-  width:100%;
+    background-color: white;
+    position:static;
+    height:25vh; /*ヘッダーの高さ*/
+    width:100%;
 }
 
 .logo{
-  position:absolute;
-  top:3%;
-  left:5%;
-  height:6vh;
+    position:absolute;
+    top:3%;
+    left:5%;
+    height:18vh;
 }
 
 .user-icon {
-  position:absolute;
-  right:6%;
-  top:1.5vh;
-  height:8vh;
-  line-height: 200px;
-  background-color: rgba(0,0,0,0.2);
-  border-radius: 50%;
-  border:double;
-  border-color: grey;
-}
+    position:absolute;
+    right:6%;
+    top:1.5vh;
+    height:20vh;
+    line-height: 200px;
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 50%;
+    border:double;
+    border-color: grey;
+  }
 
 .header_hr{
-  position:absolute;
-  top:10%;
-  width:100%;
+    position:absolute;
+    top:10%;
+    width:100%;
 }
 
 /*メイン*/
@@ -37,21 +37,28 @@ body{
   background-color: #FCF9EF;
 }
 
-button {
-  position: absolute;
-  font-size: 40px;
-  margin: 60px 0 0 80px;
-}
 
 input[type="submit"]{
-  position: absolute;
-  font-size: 40px;
-  margin: 60px 0 0 800px;
+  font-size: 50px;
+  position: relative;
+  top: 1050px;
 }
+.submit{
+
+  top: 300px;
+  position:absolute;
+  margin: 0 0 0 800px;
+}
+
+input[type="text"]{
+	font-size:35px;
+    bottom: 270px;
+}
+
 
 textarea {
   text-align: center;
-  margin: 500px 120px 0 120px;
+  margin: 260px 120px 0 80px;
   font-size: 30px;
 }
 
@@ -59,6 +66,8 @@ textarea {
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
+  position:relative;
+  bottom:400px;
 }
 .rate-form input[type=radio] {
   display: none;
@@ -80,29 +89,40 @@ textarea {
   color: #ffcc00;
 }
 
-h4 {
-  text-align: center;
-  font-size: 30px;
-}
 
 input[type="file"] {
-  text-align: center;
-  font-size: 30px;
-  width: "100px";
-  height: "100px";
+  font-size: 40px;
+  margin-top: 200px;
+  position: relative;
+  bottom: 180px;
 }
 
-/*img{
-  width: 500px;
+.file_btn{
+	position: relative;
+	text-align:center;
+	top: 340px;
+}
 
-}  */
+.can {
+	text-align: center;
+	position: relative;
+	top: 350px;
+}
 
+input[type="date" i] {
+  font-size: 35px;
+  /*position: relative;
+  bottom: 270px;*/
+  position: absolute;
+  top: 260px;
+}
 
-
-
-video{
-  width: 500px;
-  text-align: center;
+p{
+  /*position: relative;
+  bottom: 270px;*/
+  position: absolute;
+  top: 310px;
+  font-size: 30px;
 }
 
 .preview-btn{
@@ -121,44 +141,43 @@ img.preview{
 
 /*フッター*/
 #footer{
-  background-color: white;
-  position:fixed;
-  bottom:0;
-  height:10vh; /*フッターの高さ*/
-  width:100%;
-
-}
+    background-color: white;
+    position:fixed;
+    bottom:0;
+    height:30vh; /*フッターの高さ*/
+    width:100%;
+  }
 
 #footer-tag {
-width:100%;
-display: flex;
-justify-content:space-evenly;
-align-items: center;
+  width:100%;
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
 }
 
 #footer-tag a{
-padding-left: 20px;
-padding-right: 20px;
-position:relative;
-display:inline-block;
+  padding-left: 20px;
+  padding-right: 20px;
+  position:relative;
+  display:inline-block;
 }
 
 #footer-tag p {
-width:7vh;
-text-align:center;
-position:absolute;
-font-size:40px;
-color:black;
-background-color: white;
-border:solid;
-border-color: black;
-border-radius: 12px;
-top:60%;
-left:50%;
-transform: translate(-50%, -50%);
+  width:21vh;
+  text-align:center;
+  position:absolute;
+  font-size:40px;
+  color:black;
+  background-color: white;
+  border:solid;
+  border-color: black;
+  border-radius: 12px;
+  top:80%;
+  left:50%;
+  transform: translate(-50%, -50%);
 }
 
 .footer-icon{
-position:relative;
-width:8vh;
+  position:relative;
+  width:18vh;
 }

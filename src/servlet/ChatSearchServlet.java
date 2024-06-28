@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dao.OnsensearchDao;
 import model.OnsenData;
 
-@WebServlet("/ChatSearch")
+@WebServlet("/ChatSearchServlet")
 public class ChatSearchServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
@@ -28,7 +28,7 @@ public class ChatSearchServlet extends HttpServlet {
 		dispatcher.forward(req, res);
     }
 
-  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     // JSON形式のリクエストボディをパース
 	  req.setCharacterEncoding("UTF-8");
     String requestBody = req.getReader().lines().collect(Collectors.joining());
@@ -47,36 +47,72 @@ public class ChatSearchServlet extends HttpServlet {
 
 
     // 結果を計算
-    String result = calculateResult(answers);
+    String HS_Address = answers.get("region");
+    String HS_Effect = answers.get("hotSpringEffect");
+    String HS_Roten = answers.get("openAirBath");
+    String HS_Keikan = answers.get("scenery");
+    String HS_Kyakusituburo = answers.get("privateBath");
+    System.out.println(HS_Address);
 
+    String encodedHS_Address = HS_Address;
+    String encodedHS_Effect = HS_Effect;
+    String encodedHS_Roten = HS_Roten;
+    String encodedHS_Keikan = HS_Keikan;
+    String encodedHS_Kyakusituburo = HS_Kyakusituburo;
+
+
+    req.setAttribute("HS_Address",encodedHS_Address);
+    req.setAttribute("HS_Effect",encodedHS_Effect);
+    req.setAttribute("HS_Roten",encodedHS_Roten);
+    req.setAttribute("HS_Keikan",encodedHS_Keikan);
+    req.setAttribute("HS_Kyakusituburo",encodedHS_Kyakusituburo);
+    req.setAttribute("hantei","hantei");
+
+    Object value = req.getAttribute("HS_Address");
+    if (value != null) {
+        // データが存在する
+        System.out.println("データが存在します: " + value);
+    } else {
+        // データが存在しない
+        System.out.println("データが存在しません");
+    }
+    String result = calculateResult(answers);
     // 結果をJSON形式で返す
+    req.setAttribute("rikomendo", result);
     resp.setContentType("application/json");
     resp.setCharacterEncoding("UTF-8");
     resp.getWriter().write(new ObjectMapper().writeValueAsString(Map.of("result", result)));
+    System.out.println("ollok");
+    req.setAttribute("result", result); 
 
     //結果を結果画面にリダイレクト
-    resp.sendRedirect("E1/ChatSaveServlet?answer=" + result);
+    //resp.sendRedirect("ChatSaveServlet?result=" + result);
+
   }
 
   private String calculateResult(Map<String, String> answers) {
+      String HS_Address = answers.get("region");
+      String HS_Effect = answers.get("hotSpringEffect");
+      String HS_Roten = answers.get("openAirBath");
+      String HS_Keikan = answers.get("scenery");
+      String HS_Kyakusituburo = answers.get("privateBath");
+      System.out.println(HS_Address);
+ 
     // answerssから正規表現でDB内を検索して答えを導き出す。
-      String HS_Address = answers.get("HS_Address");
-      String HS_Effect = answers.get("HS_Effect");
-      String HS_Roten = answers.get("HS_Roten");
-      String HS_Keikan = answers.get("HS_Keikan");
-      String HS_Kyakusituburo = answers.get("HS_Kyakusituburo");
+
 	OnsensearchDao OSD = new OnsensearchDao();
-	List<OnsenData> searchList = OSD.select(HS_Address, HS_Effect, HS_Roten, HS_Keikan, HS_Kyakusituburo);
-
-
+	List<OnsenData> testList = OSD.select("","","","","");
+	String searchList = OSD.select1(HS_Address, HS_Effect, HS_Roten, HS_Keikan, HS_Kyakusituburo);
+	
+	return searchList;
 
     // ...
-    if (searchList != null && !searchList.isEmpty()) {
-        OnsenData recommendedOnsen = searchList.get(0);
-        return "おすすめ結果：" + recommendedOnsen.getONSEN_NAME() ;
-    } else {
-        return "申し訳ありませんが、お探しの温泉は見つかりませんでした。";
-    }
+//    if (searchList != null && !searchList.isEmpty()) {
+//        OnsenData recommendedOnsen = searchList.get(0);
+//        return  recommendedOnsen.getONSEN_NAME() ;
+//    } else {
+//        return "申し訳ありませんが、お探しの温泉は見つかりませんでした。";
+//    }
 
-  }
+ }
 }

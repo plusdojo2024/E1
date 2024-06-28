@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>ユーザー情報登録 | ゆとりっぷ</title>
-<link rel="stylesheet" type="text/css" href="css/Login.css">
+<link rel="stylesheet" type="text/css" href="/E1/css/Login.css">
 </head>
 
 <body>

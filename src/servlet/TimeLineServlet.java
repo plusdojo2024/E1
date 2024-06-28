@@ -55,6 +55,7 @@ public class TimeLineServlet extends HttpServlet {
 		//ここでユーザーデータを二次元配列ユーザーのid[[ユーザーネーム][ユーザーアイコン画像]]
         Map<Integer, String> tlud= tDao.selectud();
 		request.setAttribute("tlud", tlud);
+		System.out.println(tlud);
 
 
         // JSPにフォワード
@@ -67,5 +68,30 @@ public class TimeLineServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
+        HttpSession session = request.getSession();
+
+        // セッションが存在しない場合はログインページにリダイレクト
+//        if (session.getAttribute("id") == null) {
+//            response.sendRedirect("/bckanri/LoginServlet");
+//            return;
+//        }
+
+        ReviewDao tDao = new ReviewDao();
+        List<Review> TList = tDao.select();
+
+        // レビューリストの最初の要素から名前を取得（例として）
+//        String name = TList.isEmpty() ? "" : TList.get(0).getPnickname();
+//        request.setAttribute("name", name);
+        request.setAttribute("TList", TList);
+        //request.setAttribute("data",TList);
+
+
+		//ここでユーザーデータを二次元配列ユーザーのid[[ユーザーネーム][ユーザーアイコン画像]]
+        Map<Integer, String> tlud= tDao.selectud();
+		request.setAttribute("tlud", tlud);
+		System.out.println(tlud);
+		 RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/TimeLine.jsp");
+	        dispatcher.forward(request, response);
+
     }
 }

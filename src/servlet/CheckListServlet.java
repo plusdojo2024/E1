@@ -25,16 +25,16 @@ public class CheckListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*
+
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("User_Id") == null) {
-			response.sendRedirect("/E1/LoginServlet");
-			return;
-		}
-*/
+//		if (session.getAttribute("id") == null) {
+//			response.sendRedirect("/E1/LoginServlet");
+//			return;
+//		}
+		String id = (String) session.getAttribute("id") ;
 		request.setCharacterEncoding("UTF-8");
-		int User_Id = 1 ;//Integer.parseInt(request.getParameter("User_Id"));
+		int User_Id =  Integer.parseInt(id);
 		CheckListViewDAO clvDao = new CheckListViewDAO();
 		List<CheckListStart> CheckList = clvDao.select(User_Id);
 		// 検索ページにフォワードする

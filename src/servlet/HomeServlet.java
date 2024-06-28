@@ -38,8 +38,22 @@ public class HomeServlet extends HttpServlet {
 		int rd = r.nextInt(max-1);
 	    String[] os = RDao.selectos(rd);//ランダムな温泉のデータを回収してきている。
 	    request.setAttribute("os", os);
-	    
-	    
+	    String[][] oslank=new String[5][3];
+
+	    if(max<30) {
+	    	oslank[0]= RDao.selectos(max+1);
+	    	oslank[1]= RDao.selectos(max+2);
+	    	oslank[2]= RDao.selectos(max+3);
+	    	oslank[3]= RDao.selectos(max+4);
+	    	oslank[4]= RDao.selectos(max+5);
+	    }else {
+	    	oslank[0]= RDao.selectos(max-5);
+	    	oslank[1]= RDao.selectos(max-4);
+	    	oslank[2]= RDao.selectos(max-3);
+	    	oslank[3]= RDao.selectos(max-2);
+	    	oslank[4]= RDao.selectos(max-1);
+	    }
+	    request.setAttribute("osrn", oslank);
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/Home.jsp");
         dispatcher.forward(request, response);
 	}

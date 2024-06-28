@@ -16,7 +16,7 @@
     </a>
     <!--ユーザーアイコン-->
     <a href="">
-        <img src="image/OIP (3).jpg" alt="アイコン" class="user-icon">
+        <img src="/E1/image/${sessionScope.ic}" alt="アイコン" class="user-icon">
     </a>
     <hr class="header_hr">
     </header>
@@ -24,14 +24,25 @@
 
     <!--メイン-->
     <main>
-        <button type="button" onclilk="histyory.back()">戻る</button><!--画面左上に配置-->
-        <form action="">
+        <form action="/E1/ReviewCreateServlet" method="post" enctype="multipart/form-data">
+        <div class="file_btn">
+		<input type="file" name="IMAGE" accept="image/*" onchange="previewImage(this);"><br>
+		</div>
+		<div class="can">
+		    <canvas id="preview" style="max-width:390px;text-align: center;position: relative;bottom: 160px;"></canvas><br>
+		</div>
             <div class="submit">
                 <input type="submit" value="送信"><!--画面右上に表示-->
             </div>
+            	<input type="date" name="example" value="2024-01-01">
             <div>
-                <textarea type="text" cols="50" rows="10"></textarea><!--レビューを記入する欄-->
-            </div>
+            	<p>温泉名：<br>
+				<input id="text" type="text" name="name"></p>
+			</div>
+           <div>
+            	<textarea type="text" name="text" cols="50" rows="10"placeholder="こちらに感想を入力してください。"></textarea>
+           </div>
+
              <div class="rate-form"><!--ここに評価の星の画像を入れる-->
                 <input id="star5" type="radio" name="rate" value="5">
                 <label for="star5">★</label>
@@ -60,7 +71,7 @@
                       }
                       imgg();
                     </Script>
-              </div>-->
+              </div>
               <hr>
               <h4>画像アップ・プレビュー</h4>
               <div class="preview-btn">
@@ -74,9 +85,10 @@
               <h4>動画アップ・プレビュー</h4>
               <input type="file" accept='video/*' onchange="preview(this, 'previewVideo');">
               <br>
-              <video  class="preview" id="previewVideo" controls="controls"></video>
-              </form>
+              <video  class="preview" id="previewVideo" controls="controls"></video>-->
 
+              </form>
+			<!--<img src="${'/E1/images/'+=image}" id="gazo">-->
     </main>
     <!--メインここまで-->
     <!--footer-->
@@ -118,5 +130,31 @@
     });
     fileReader.readAsDataURL(obj.files[0]);
     }
+</script>
+<script>
+	function previewImage(obj){
+
+		var fileReader = new FileReader();
+
+		// 読み込み後に実行する処理
+		fileReader.onload = (function() {
+
+			// canvas にプレビュー画像を表示
+			var canvas = document.getElementById('preview');
+			var ctx = canvas.getContext('2d');
+			var image = new Image();
+			image.src = fileReader.result;
+			console.log(fileReader.result) // ← (確認用)
+
+			image.onload = (function () {
+				canvas.width = image.width;
+				canvas.height = image.height;
+				ctx.drawImage(image, 0, 0);
+			});
+		});
+		// 画像読み込み
+		fileReader.readAsDataURL(obj.files[0]);
+		console.log(fileReader.result) // ← (確認用)null
+	}
 </script>
 </html>

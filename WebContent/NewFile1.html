@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>温泉のおすすめ</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .chat-log {
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .chat-message { /* 新しいスタイル */
+      display: flex;
+      margin-bottom: 10px;
+    }
+    .user-message, 
+    .bot-message { /* 新しいスタイル */
+      padding: 10px;
+      border-radius: 10px;
+      max-width: 70%;
+    }
+    .user-message { /* 新しいスタイル */
+      background-color: #e9ffe9; 
+      margin-left: auto;
+    }
+    .bot-message { /* 新しいスタイル */
+      background-color: #f2f2f2; 
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>温泉のおすすめ</h1>
+  <div class="chat-log" id="chat-log"></div>
+  <input type="text" id="answer-input" />
+  <button id="answer-btn">回答</button>
+
+  <script>
+    //質問の登録
+    const questions = [
+      { text: "地域はどこですか？<br>地方、都道府県で答えてください", key: "region" },
+      { text: "温泉の効能は何ですか？<br>泉質を炭酸泉、重曹泉、食塩泉、硫黄のように答えてほしい", key: "hotSpringEffect" },
+      { text: "景観は何ですか？<br>海、川、山とか", key: "scenery" },
+      { text: "客室風呂はありますか？<br>あり、なしで答えてください", key: "privateBath" }
+    ];
+
+    const answers = {};
+    let currentIndex = 0;
+
+    function askQuestion() {
+      const question = questions[currentIndex];
+      // 質問を角丸枠で囲む
+      document.getElementById("chat-log").innerHTML += `
+        <div class="chat-message">
+          <div class="bot-message">Q: ${question.text}</div> 
+        </div>
+      `;
+      document.getElementById("answer-input").focus();
+    }
+
+    document.getElementById("answer-btn").addEventListener("click", () => {
+      const answer = document.getElementById("answer-input").value;
+      answers[questions[currentIndex].key] = answer;
+      console.log(`Answer: ${answer}`);
+
+      // 回答を吹き出しで囲む
+      document.getElementById("chat-log").innerHTML += `
+        <div class="chat-message">
+          <div class="user-message">A: ${answer}</div>
+        </div>
+      `;
+      document.getElementById("answer-input").value = "";
+
+      currentIndex++;
+      if (currentIndex < questions.length) {
+        askQuestion();
+      } else {
+        document.getElementById("chat-log").innerHTML += 
+        `<div class="chat-message">
+          <div class="bot-message">以上で質問は終わりです。おすすめを検索するのでお待ち下さい。</div> 
+        </div>`;
+        console.log("All answers:", answers);
+
+        // 非同期通信でサーブレットに送る
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:8080/E1/ChatSearchServlet", true); 
+        xhr.setRequestHeader("Content-Type", "application/json");
+        console.log(JSON.stringify(answers));
+        xhr.send(JSON.stringify(answers)); 
+
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText); 
+            const result = response.result; 
+            
+            console.log("result");
+            // おすすめ結果を吹き出しで囲む
+            document.getElementById("chat-log").innerHTML += 
+            `<div class="chat-message">
+              <div class="bot-message">おすすめ結果：${result}</div>
+            </div>`;
+          } else {
+            console.error("Error:", xhr.statusText);
+          }
+        };
+      }
+    });
+
+    askQuestion();
+  </script>
+</body>
+</html>

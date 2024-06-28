@@ -22,7 +22,7 @@ import model.ChatData;
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E1", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 			String sql = "INSERT INTO Chat VALUES (null, ?, ?)";
@@ -79,7 +79,7 @@ import model.ChatData;
 					Class.forName("org.h2.Driver");
 
 					// データベースに接続する
-					conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/E1", "sa", "");
+					conn = DriverManager.getConnection("jdbc:h2:file:C:/DOJO2024DB/E1", "sa", "");
 
 					// SQL文を準備する
 					String sql = "SELECT * FROM ONSEN WHERE  cBot_Id LIKE ? ";
